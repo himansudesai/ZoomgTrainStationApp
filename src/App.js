@@ -7,16 +7,14 @@ import Engine from './shapes/engine.js';
 function App() {
 
   useEffect(() => {
-    const Zoomg = window['Zoomg'];
-    console.log(`Zoomg = ${Zoomg}`);
-    const svgEle = Zoomg.svgElement;
-    const Config = Zoomg.Config;
-    const ViewStack = Zoomg.ViewStack;
-    const Rectangle = Zoomg.Rectangle;
+    const Zooomg = window['Zoomg'];
+    const Config = Zooomg.Config;
+    const ViewStack = Zooomg.ViewStack;
+    const Rectangle = Zooomg.Rectangle;
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
-    Zoomg.new('zoomg-container').then( () => {
+    Zooomg.new('zoomg-container').then( () => {
       const context = new Rectangle("top-context", 0, 0, null, 0, 0);
     
       const ROW_COUNT = 25;
@@ -32,14 +30,14 @@ function App() {
       let count = 0;
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = 0; j < ROW_COUNT; j++) {
-          let atom = new Atom(`${++count}`, (ATOM_SIZE * i), (ATOM_SIZE * j), svgEle.group, ATOM_SCALE);
+          let atom = new Atom(`${++count}`, (ATOM_SIZE * i), (ATOM_SIZE * j), ATOM_SCALE);
           context.insert(atom);
         }
       }
     
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = 25; j < ROW_COUNT * 2; j++) {
-          let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, svgEle.group, ENGINE_SCALE);
+          let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, ENGINE_SCALE);
           context.insert(engine);
         }
       }
