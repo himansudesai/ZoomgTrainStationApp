@@ -7,14 +7,15 @@ import Engine from './shapes/engine.js';
 function App() {
 
   useEffect(() => {
-    const Zooomg = window['Zoomg'];
-    const Config = Zooomg.Config;
-    const ViewStack = Zooomg.ViewStack;
-    const Rectangle = Zooomg.Rectangle;
+    const Zoomg = window['Zoomg'];
+    const Config = Zoomg.Config;
+    const ViewStack = Zoomg.ViewStack;
+    const Rectangle = Zoomg.Rectangle;
+    const SVGElement = Zoomg.SVGElement;
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
-    Zooomg.new('zoomg-container').then( () => {
+    Zoomg.new('zoomg-container').then( (svgElement) => {
       const context = new Rectangle("top-context", 0, 0, null, 0, 0);
     
       const ROW_COUNT = 25;
@@ -43,7 +44,7 @@ function App() {
       }
     
       Config.sayHello();
-      ViewStack.reset(zoomgContainer.clientWidth, zoomgContainer.clientHeight, context);
+      svgElement.initialize(context, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
     
       window.context = context;
     }).catch(err => {
@@ -55,7 +56,6 @@ function App() {
 
   return (
     <div className="App" id="zoomg-container" style={{width: 1000, height: 600, backgroundColor: 'lightblue', overflow: 'scroll'}}>
-
     </div>
   );
 }
