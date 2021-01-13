@@ -1,17 +1,13 @@
-import './App.css';
 import {useEffect} from 'react';
-import Atom from './shapes/atom.js';
-import Engine from './shapes/engine.js';
+import Atom from '../../shapes/atom.js';
+import Engine from '../../shapes/engine.js';
 
-
-function App() {
+function ZoomgView() {
 
   useEffect(() => {
     const Zoomg = window['Zoomg'];
     const Config = Zoomg.Config;
-    const ViewStack = Zoomg.ViewStack;
     const Rectangle = Zoomg.Rectangle;
-    const SVGElement = Zoomg.SVGElement;
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
@@ -55,9 +51,9 @@ function App() {
   });
 
   return (
-    <div className="App" id="zoomg-container" style={{width: 1000, height: 600, backgroundColor: 'lightblue', overflow: 'scroll'}}>
+    <div id="zoomg-container" style={{width: 1000, height: 450, backgroundColor: 'lightblue', overflow: 'scroll'}}>
     </div>
   );
 }
 
-export default App;
+export default ZoomgView;
