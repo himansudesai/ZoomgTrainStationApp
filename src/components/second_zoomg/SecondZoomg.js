@@ -48,7 +48,7 @@ function SecondZoomg() {
   });
 
   return (
-    <div id="second-zoomg" style={{width: 1000, height: 50, backgroundColor: 'pink'}}>
+    <div id="second-zoomg" style={{width: 1000, height: 50, backgroundColor: 'pink', marginLeft: 40}}>
     </div>
   );
 }
