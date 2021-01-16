@@ -12,7 +12,7 @@ function ZoomgView() {
     console.log(`++++ BEFORE Zoomg.new - client width = ${zoomgContainer.clientWidth}`);
 
     Zoomg.new(zoomgContainer).then( (view) => {
-      const context = new Rectangle("top-context", 0, 0, 0, 0, view);
+      const context = new Rectangle("top-context", 0, 0, view);
       const svgElement = view.getSVGElement();
 
       const ROW_COUNT = 8;

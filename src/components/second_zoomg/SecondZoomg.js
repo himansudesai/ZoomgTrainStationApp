@@ -11,7 +11,7 @@ function SecondZoomg() {
     const zoomgContainer = document.getElementById("second-zoomg");
 
     Zoomg.new(zoomgContainer).then( (view) => {
-      const context = new Rectangle("top-context", 0, 0, 0, 0, view);
+      const context = new Rectangle("top-context", 0, 0, view);
     
       const ROW_COUNT = 4;
       const COLUMN_COUNT = 12;
