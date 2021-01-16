@@ -80,7 +80,7 @@ svgStrings[SVGComplexity.Pixels15] = `
     y="144.25183"></rect>
   </g>`;
 
-  svgStrings[SVGComplexity.Pixels7] = `
+svgStrings[SVGComplexity.Pixels7] = `
 <g transform="scale(0.5, 0.5) translate(-120, -70)">
   <rect
     style="fill:#280b0b;fill-opacity:1"

@@ -9,16 +9,17 @@ function ZoomgView() {
     const Rectangle = Zoomg.Rectangle;
     
     const zoomgContainer = document.getElementById("zoomg-container");
+    console.log(`++++ BEFORE Zoomg.new - client width = ${zoomgContainer.clientWidth}`);
 
-    Zoomg.new('zoomg-container').then( (view) => {
+    Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, 0, 0, view);
       const svgElement = view.getSVGElement();
 
-      const ROW_COUNT = 2;
-      const COLUMN_COUNT = 12;
+      const ROW_COUNT = 8;
+      const COLUMN_COUNT = 30;
     
-      const ATOM_SIZE = 25;
-      const ENGINE_SIZE = 50;
+      const ATOM_SIZE = 10;
+      const ENGINE_SIZE = 10;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialSizeForShape(anAtom.getTypeName(), ATOM_SIZE);
@@ -32,12 +33,12 @@ function ZoomgView() {
         }
       }
 
-      // for (let i = 0; i < COLUMN_COUNT; i++) {
-      //   for (let j = 25; j < ROW_COUNT * 2; j++) {
-      //     let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, view, ENGINE_SCALE);
-      //     context.insert(engine);
-      //   }
-      // }
+      for (let i = 0; i < COLUMN_COUNT; i++) {
+        for (let j = ROW_COUNT; j < ROW_COUNT * 2; j++) {
+          let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, view, ENGINE_SCALE);
+          context.insert(engine);
+        }
+      }
     
       view.getConfig().sayHello();
       view.initialize(context, zoomgContainer.clientWidth, zoomgContainer.clientHeight);

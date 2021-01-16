@@ -10,7 +10,7 @@ function SecondZoomg() {
     
     const zoomgContainer = document.getElementById("second-zoomg");
 
-    Zoomg.new('second-zoomg').then( (view) => {
+    Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, 0, 0, view);
       const svgElement = view.getSVGElement();
     
