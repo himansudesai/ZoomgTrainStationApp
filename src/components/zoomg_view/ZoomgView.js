@@ -16,26 +16,26 @@ function ZoomgView() {
       const svgElement = view.getSVGElement();
 
       const ROW_COUNT = 8;
-      const COLUMN_COUNT = 30;
+      const COLUMN_COUNT = 10;
     
-      const ATOM_SIZE = 10;
-      const ENGINE_SIZE = 10;
+      const ATOM_SIZE_PERCENT = 1;
+      const ENGINE_SIZE_PERCENT = 2;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
-      const ATOM_SCALE = view.getConfig().registerInitialSizeForShape(anAtom.getTypeName(), ATOM_SIZE);
-      const ENGINE_SCALE = view.getConfig().registerInitialSizeForShape(anEngine.getTypeName(), ENGINE_SIZE);
+      const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
+      const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
     
       let count = 0;
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = 0; j < ROW_COUNT; j++) {
-          let atom = new Atom(`${++count}`, (ATOM_SIZE * i), (ATOM_SIZE * j), view, ATOM_SCALE);
+          let atom = new Atom(`${++count}`, (ATOM_SIZE_PERCENT * i), (ATOM_SIZE_PERCENT * j), view, ATOM_SCALE);
           context.insert(atom);
         }
       }
 
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = ROW_COUNT; j < ROW_COUNT * 2; j++) {
-          let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, view, ENGINE_SCALE);
+          let engine = new Engine(`${++count}`, (ENGINE_SIZE_PERCENT * i), (ENGINE_SIZE_PERCENT * j), view, ENGINE_SCALE);
           context.insert(engine);
         }
       }

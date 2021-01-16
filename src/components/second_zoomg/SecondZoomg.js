@@ -12,30 +12,20 @@ function SecondZoomg() {
 
     Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, 0, 0, view);
-      const svgElement = view.getSVGElement();
     
-      const ROW_COUNT = 5;
+      const ROW_COUNT = 4;
       const COLUMN_COUNT = 12;
     
-      const ATOM_SIZE = 8;
-      const ENGINE_SIZE = 8;
+      const ATOM_SIZE_PERCENT = 4;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
-      const ATOM_SCALE = view.getConfig().registerInitialSizeForShape(anAtom.getTypeName(), ATOM_SIZE);
-      const ENGINE_SCALE = view.getConfig().registerInitialSizeForShape(anEngine.getTypeName(), ENGINE_SIZE);
+      const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
     
       let count = 99000;
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = 0; j < ROW_COUNT; j++) {
-          let atom = new Atom(`${++count}`, (ATOM_SIZE * i), (ATOM_SIZE * j), view, ATOM_SCALE);
+          let atom = new Atom(`${++count}`, (ATOM_SIZE_PERCENT * i), (ATOM_SIZE_PERCENT * j), view, ATOM_SCALE);
           context.insert(atom);
-        }
-      }
-    
-      for (let i = 0; i < COLUMN_COUNT; i++) {
-        for (let j = 25; j < ROW_COUNT * 2; j++) {
-          let engine = new Engine(`${++count}`, (ENGINE_SIZE * i), (ENGINE_SIZE * j) + 20, view, ENGINE_SCALE);
-          context.insert(engine);
         }
       }
     
@@ -47,7 +37,7 @@ function SecondZoomg() {
   });
 
   return (
-    <div id="second-zoomg" style={{width: 1000, height: 50, backgroundColor: 'pink', marginLeft: 40}}>
+    <div id="second-zoomg" style={{width: 1000, height: 200, backgroundColor: 'pink', marginLeft: 10}}>
     </div>
   );
 }
