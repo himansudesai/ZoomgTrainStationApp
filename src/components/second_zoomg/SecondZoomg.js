@@ -9,6 +9,7 @@ function SecondZoomg() {
     const Rectangle = Zoomg.Rectangle;
     
     const zoomgContainer = document.getElementById("second-zoomg");
+    console.log(`++++ BEFORE SecondZoomg.new - client width = ${zoomgContainer.clientWidth}`);
 
     Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, view);
@@ -21,7 +22,7 @@ function SecondZoomg() {
       const anEngine = new Engine("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
     
-      let count = 99000;
+      let count = 40000;
       for (let i = 0; i < COLUMN_COUNT; i++) {
         for (let j = 0; j < ROW_COUNT; j++) {
           let atom = new Atom(`${++count}`, (ATOM_SIZE_PERCENT * i), (ATOM_SIZE_PERCENT * j), view, ATOM_SCALE);
