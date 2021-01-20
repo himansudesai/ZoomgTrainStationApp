@@ -9,11 +9,12 @@ function App() {
     <React.Fragment>
       <h1>Hello</h1>
       <ZoomgView></ZoomgView>
-      <SmallZoomgView></SmallZoomgView>
-      <SecondZoomg></SecondZoomg>
       <h1>Zoomg</h1>
     </React.Fragment>
   );
 }
 
 export default App;
+
+{/* <SmallZoomgView></SmallZoomgView>
+<SecondZoomg></SecondZoomg> */}
