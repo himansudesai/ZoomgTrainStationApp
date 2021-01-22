@@ -17,28 +17,49 @@ function ZoomgView() {
       const ROW_COUNT = 4;
       const COLUMN_COUNT = 12;
     
-      const ATOM_SIZE_PERCENT = 5;
-      const ENGINE_SIZE_PERCENT = 6;
+      const ATOM_SIZE_PERCENT = 4;
+      const ENGINE_SIZE_PERCENT = 5;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
     
-      let count = 0;
-      for (let i = 0; i < COLUMN_COUNT; i=i+3) {
-        for (let j = 0; j < 4; j=j+2) {
-          let atom = new Atom(`${++count}`, (ATOM_SIZE_PERCENT+1) * i, (ATOM_SIZE_PERCENT+1) * j, view, ATOM_SCALE);
+      const slots = new Array(200);
+      for (let i=0; i<40; i++) {
+        const slot = Math.floor(Math.random() * 200);
+        if (!slots[slot]) {
+          const column = (slot % 20);
+          const row = Math.floor(slot / 20);
+          let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT, row * ENGINE_SIZE_PERCENT, view, ATOM_SCALE);
+          slots[slot] = atom;
           context.insert(atom);
         }
       }
-      const yOffset = ROW_COUNT * ATOM_SIZE_PERCENT + 5;
-      // const yOffset = ROW_COUNT * 0;
-      for (let i = COLUMN_COUNT-1; i >= 0; i--) {
-        for (let j = ROW_COUNT-1; j >= 0; j--) {
-          let engine = new Engine(`${++count}`, (ENGINE_SIZE_PERCENT * i), (ENGINE_SIZE_PERCENT * j) + yOffset, view, ENGINE_SCALE);
+      for (let i=0; i<40; i++) {
+        const slot = Math.floor(Math.random() * 200);
+        if (!slots[slot]) {
+          const column = (slot % 20);
+          const row = Math.floor(slot / 20);
+          let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT, row * ENGINE_SIZE_PERCENT, view, ENGINE_SCALE);
+          slots[slot] = engine;
           context.insert(engine);
         }
       }
+      // let count = 0;
+      // for (let i = 0; i < COLUMN_COUNT; i=i+3) {
+      //   for (let j = 0; j < 4; j=j+2) {
+      //     let atom = new Atom(`${++count}`, (ATOM_SIZE_PERCENT+1) * i, (ATOM_SIZE_PERCENT+1) * j, view, ATOM_SCALE);
+      //     context.insert(atom);
+      //   }
+      // }
+      // const yOffset = ROW_COUNT * ATOM_SIZE_PERCENT + 5;
+      // // const yOffset = ROW_COUNT * 0;
+      // for (let i = COLUMN_COUNT-1; i >= 0; i--) {
+      //   for (let j = ROW_COUNT-1; j >= 0; j--) {
+      //     let engine = new Engine(`${++count}`, (ENGINE_SIZE_PERCENT * i), (ENGINE_SIZE_PERCENT * j) + yOffset, view, ENGINE_SCALE);
+      //     context.insert(engine);
+      //   }
+      // }
     
       view.getConfig().sayHello();
       view.initialize(context, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
