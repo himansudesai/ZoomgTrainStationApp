@@ -14,9 +14,6 @@ function ZoomgView() {
     Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, view);
 
-      const ROW_COUNT = 4;
-      const COLUMN_COUNT = 12;
-    
       const ATOM_SIZE_PERCENT = 4;
       const ENGINE_SIZE_PERCENT = 5;
       const anAtom = new Atom("dummy", 0, 0, view);
@@ -24,23 +21,23 @@ function ZoomgView() {
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
     
-      const slots = new Array(200);
+      const slots = new Array(170);
       for (let i=0; i<40; i++) {
-        const slot = Math.floor(Math.random() * 200);
+        const slot = Math.floor(Math.random() * 170);
         if (!slots[slot]) {
-          const column = (slot % 20);
-          const row = Math.floor(slot / 20);
-          let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT, row * ENGINE_SIZE_PERCENT, view, ATOM_SCALE);
+          const column = (slot % 19);
+          const row = Math.floor(slot / 19);
+          let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ATOM_SCALE);
           slots[slot] = atom;
           context.insert(atom);
         }
       }
       for (let i=0; i<40; i++) {
-        const slot = Math.floor(Math.random() * 200);
+        const slot = Math.floor(Math.random() * 170);
         if (!slots[slot]) {
-          const column = (slot % 20);
-          const row = Math.floor(slot / 20);
-          let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT, row * ENGINE_SIZE_PERCENT, view, ENGINE_SCALE);
+          const column = (slot % 19);
+          const row = Math.floor(slot / 19);
+          let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ENGINE_SCALE);
           slots[slot] = engine;
           context.insert(engine);
         }
