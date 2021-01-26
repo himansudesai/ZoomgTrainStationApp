@@ -66,7 +66,7 @@ function ZoomgView() {
   });
 
   return (
-    <div id="zoomg-container" style={{width: 500, height: 250, backgroundColor: 'oldlace', overflow: 'scroll'}}>
+    <div id="zoomg-container" style={{width: 500, height: 250, overflow: 'scroll'}}>
     </div>
   );
 }
