@@ -33,7 +33,7 @@ function SecondZoomg() {
       view.getConfig().sayHello();
       view.initialize(context, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
     }).catch(err => {
-      console.log(`ERROR occured during the process of initializing Zoomg svg-element.  The erros is:\n${err}`);
+      console.log(`ERROR occured during the process of initializing Zoomg svg-element.  The error is:\n${err}`);
     })
   });
 

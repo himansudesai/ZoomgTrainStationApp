@@ -42,7 +42,7 @@ function SmallZoomgView() {
       view.getConfig().sayHello();
       view.initialize(context, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
     }).catch(err => {
-      console.log(`ERROR occured during the process of initializing Zoomg View.  The erros is:\n${err}`);
+      console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
     })
   });
 
