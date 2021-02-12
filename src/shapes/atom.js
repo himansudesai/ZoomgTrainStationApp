@@ -82,6 +82,17 @@ svgStrings[SVGComplexity.Pixels15] = `
   </g>
 `;
 
+svgStrings[SVGComplexity.Pixels7] = `
+  <g transform="translate(50, 54)" stroke-width="2">
+    <g fill="#66899a" stroke="white">
+      <circle fill="#80a3cf" r="25"></circle>
+      <circle cy="-44" r="9"></circle>
+      <circle cx="-40" cy="18" r="9"></circle>
+      <circle cx="40" cy="18" r="9"></circle>
+    </g>
+  </g>
+`;
+
 export default class Atom extends Shape {
 
   getTypeName() {
