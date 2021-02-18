@@ -22,24 +22,28 @@ function ZoomgView() {
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
     
       const slots = new Array(1000);
-      for (let i=0; i<40; i++) {
+      for (let i=0; i<100; i++) {
         const slot = Math.floor(Math.random() * 1000);
         if (!slots[slot]) {
-          const column = (slot % 50);
-          const row = Math.floor(slot / 50);
+          const column = (slot % 40);
+          const row = Math.floor(slot / 40);
           let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ATOM_SCALE);
           slots[slot] = atom;
           context.insert(atom);
+        } else {
+          console.log(`**** SKIPPING ${slot}`);
         }
       }
-      for (let i=0; i<40; i++) {
+      for (let i=0; i<100; i++) {
         const slot = Math.floor(Math.random() * 1000);
         if (!slots[slot]) {
-          const column = (slot % 50);
-          const row = Math.floor(slot / 50);
+          const column = (slot % 40);
+          const row = Math.floor(slot / 40);
           let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ENGINE_SCALE);
           slots[slot] = engine;
           context.insert(engine);
+        } else {
+          console.log(`**** SKIPPING ${slot}`);
         }
       }
       // let count = 0;
@@ -66,7 +70,7 @@ function ZoomgView() {
   });
 
   return (
-    <div id="zoomg-container" style={{width: 500, height: 250, overflow: 'scroll'}}>
+    <div id="zoomg-container" style={{width: 500, height: 300, overflow: 'scroll'}}>
     </div>
   );
 }
