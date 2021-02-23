@@ -14,36 +14,32 @@ function ZoomgView() {
     Zoomg.new(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, view);
 
-      const ATOM_SIZE_PERCENT = 1;
-      const ENGINE_SIZE_PERCENT = 2;
+      const ATOM_SIZE_PERCENT = 0.5;
+      const ENGINE_SIZE_PERCENT = 1.0;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
     
-      const slots = new Array(1000);
-      for (let i=0; i<100; i++) {
-        const slot = Math.floor(Math.random() * 1000);
+      const slots = new Array(2000);
+      for (let i=0; i<800; i++) {
+        const slot = Math.floor(Math.random() * 4000);
         if (!slots[slot]) {
-          const column = (slot % 40);
-          const row = Math.floor(slot / 40);
+          const column = (slot % 80);
+          const row = Math.floor(slot / 80);
           let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ATOM_SCALE);
           slots[slot] = atom;
           context.insert(atom);
-        } else {
-          console.log(`**** SKIPPING ${slot}`);
         }
       }
-      for (let i=0; i<100; i++) {
-        const slot = Math.floor(Math.random() * 1000);
+      for (let i=0; i<800; i++) {
+        const slot = Math.floor(Math.random() * 4000);
         if (!slots[slot]) {
-          const column = (slot % 40);
-          const row = Math.floor(slot / 40);
+          const column = (slot % 80);
+          const row = Math.floor(slot / 80);
           let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ENGINE_SCALE);
           slots[slot] = engine;
           context.insert(engine);
-        } else {
-          console.log(`**** SKIPPING ${slot}`);
         }
       }
       // let count = 0;

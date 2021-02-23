@@ -60,7 +60,7 @@ svgStrings[SVGComplexity.Pixels30] = `
   <g fill="none">
     <ellipse stroke="#66899a" rx="6" ry="44"></ellipse>
     <ellipse stroke="#66899a" rx="6" ry="44"  transform="rotate(90)"></ellipse>
-    <circle  stroke="#4b541f" r="44"></circle>
+    <circle  stroke="#ff0000" r="44"></circle>
   </g>
   <g fill="#66899a" stroke="white">
     <circle fill="#80a3cf" r="13"></circle>
@@ -71,7 +71,7 @@ svgStrings[SVGComplexity.Pixels30] = `
 </g>
 `;
 
-svgStrings[SVGComplexity.Pixels15] = `
+svgStrings[SVGComplexity.InsideGroups] = `
   <g transform="translate(50, 54)" stroke-width="2">
     <g fill="#66899a" stroke="white">
       <circle fill="#80a3cf" r="25"></circle>
@@ -82,16 +82,16 @@ svgStrings[SVGComplexity.Pixels15] = `
   </g>
 `;
 
-svgStrings[SVGComplexity.Pixels7] = `
-  <g transform="translate(50, 54)" stroke-width="2">
-    <g fill="#66899a" stroke="white">
-      <circle fill="#80a3cf" r="25"></circle>
-      <circle cy="-44" r="9"></circle>
-      <circle cx="-40" cy="18" r="9"></circle>
-      <circle cx="40" cy="18" r="9"></circle>
-    </g>
-  </g>
-`;
+// svgStrings[SVGComplexity.TooSmallToDisplay] = `
+//   <g transform="translate(50, 54)" stroke-width="2">
+//     <g fill="#66899a" stroke="white">
+//       <circle fill="#80a3cf" r="25"></circle>
+//       <circle cy="-44" r="9"></circle>
+//       <circle cx="-40" cy="18" r="9"></circle>
+//       <circle cx="40" cy="18" r="9"></circle>
+//     </g>
+//   </g>
+// `;
 
 export default class Atom extends Shape {
 
