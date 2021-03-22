@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import Atom from '../../shapes/atom.js';
 import Engine from '../../shapes/engine.js';
+import Rectangles from '../../shapes/rectangles';
 
 function ZoomgView() {
 
@@ -11,30 +12,40 @@ function ZoomgView() {
     const zoomgContainer = document.getElementById("zoomg-container");
     console.log(`++++ BEFORE Zoomg.new - client width = ${zoomgContainer.clientWidth}`);
 
-    Zoomg.new(zoomgContainer).then( (view) => {
+    Zoomg.createView(zoomgContainer).then( (view) => {
       const context = new Rectangle("top-context", 0, 0, view);
 
-      const ATOM_SIZE_PERCENT = 0.5;
-      const ENGINE_SIZE_PERCENT = 1.0;
+      const ATOM_SIZE_PERCENT = 4;
+      const ENGINE_SIZE_PERCENT = 0.5;
+      const RECTANGLES_SIZE_PERCENT = 0.1;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
+      const aRectangles = new Rectangles("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
+      const RECTANGLES_SCALE = view.getConfig().registerInitialPercentSizeForShape(aRectangles.getTypeName(), RECTANGLES_SIZE_PERCENT);
     
       const slots = new Array(2000);
-      for (let i=0; i<800; i++) {
+      let filledSlots = 0;
+      for (let i=0; i<20; i++) {
         const slot = Math.floor(Math.random() * 4000);
         if (!slots[slot]) {
+          ++filledSlots;
           const column = (slot % 80);
           const row = Math.floor(slot / 80);
-          let atom = new Atom(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ATOM_SCALE);
+          let atom = new Atom(`${Math.random() * 100000}`, column + 3, row * 3, view, ATOM_SCALE);
           slots[slot] = atom;
           context.insert(atom);
         }
       }
-      for (let i=0; i<800; i++) {
+
+      let rectangles = new Rectangles(`${Math.random() * 100000}`, 10, 10, view, RECTANGLES_SCALE);
+      context.insert(rectangles);
+
+        for (let i=0; i<2; i++) {
         const slot = Math.floor(Math.random() * 4000);
         if (!slots[slot]) {
+          ++filledSlots;
           const column = (slot % 80);
           const row = Math.floor(slot / 80);
           let engine = new Engine(`${Math.random() * 100000}`, column * ENGINE_SIZE_PERCENT + 3, row * ENGINE_SIZE_PERCENT + 3, view, ENGINE_SCALE);
@@ -42,6 +53,7 @@ function ZoomgView() {
           context.insert(engine);
         }
       }
+      console.log(`++++ FILLED SLOTS = ${filledSlots}`);
       // let count = 0;
       // for (let i = 0; i < COLUMN_COUNT; i=i+3) {
       //   for (let j = 0; j < 4; j=j+2) {
