@@ -2,6 +2,8 @@ import {useEffect} from 'react';
 import Atom from '../../shapes/atom.js';
 import Engine from '../../shapes/engine.js';
 import Rectangles from '../../shapes/rectangles';
+import House from '../../shapes/house';
+import './ZoomgView.css';
 
 function ZoomgView() {
 
@@ -18,12 +20,15 @@ function ZoomgView() {
       const ATOM_SIZE_PERCENT = 4;
       const ENGINE_SIZE_PERCENT = 0.5;
       const RECTANGLES_SIZE_PERCENT = 0.1;
+      const HOUSE_SIZE_PERCENT = 0.3;
       const anAtom = new Atom("dummy", 0, 0, view);
       const anEngine = new Engine("dummy", 0, 0, view);
       const aRectangles = new Rectangles("dummy", 0, 0, view);
+      const aHouse = new House("dummy", 0, 0, view);
       const ATOM_SCALE = view.getConfig().registerInitialPercentSizeForShape(anAtom.getTypeName(), ATOM_SIZE_PERCENT);
       const ENGINE_SCALE = view.getConfig().registerInitialPercentSizeForShape(anEngine.getTypeName(), ENGINE_SIZE_PERCENT);
       const RECTANGLES_SCALE = view.getConfig().registerInitialPercentSizeForShape(aRectangles.getTypeName(), RECTANGLES_SIZE_PERCENT);
+      const HOUSE_SCALE = view.getConfig().registerInitialPercentSizeForShape(aHouse.getTypeName(), HOUSE_SIZE_PERCENT);
     
       const slots = new Array(2000);
       let filledSlots = 0;
@@ -41,6 +46,9 @@ function ZoomgView() {
 
       let rectangles = new Rectangles(`${Math.random() * 100000}`, 10, 10, view, RECTANGLES_SCALE);
       context.insert(rectangles);
+
+      let house = new House(`${Math.random() * 100000}`, 20, 20, view, HOUSE_SCALE);
+      context.insert(house);
 
         for (let i=0; i<2; i++) {
         const slot = Math.floor(Math.random() * 4000);
