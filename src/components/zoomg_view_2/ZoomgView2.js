@@ -3,15 +3,15 @@ import Atom from '../../shapes/atom.js';
 import Engine from '../../shapes/engine.js';
 import Rectangles from '../../shapes/rectangles';
 import House from '../../shapes/house';
-import './ZoomgView.css';
+import './ZoomgView2.css';
 
-function ZoomgView() {
+function ZoomgView2() {
 
   useEffect(() => {
     const Zoomg = window['Zoomg'];
     const Rectangle = Zoomg.Rectangle;
     
-    const zoomgContainer = document.getElementById("zoomg-container");
+    const zoomgContainer = document.getElementById("zoomg-container-2");
     console.log(`++++ BEFORE Zoomg.new - client width = ${zoomgContainer.clientWidth}`);
 
     Zoomg.createView(zoomgContainer).then( (view) => {
@@ -62,16 +62,15 @@ function ZoomgView() {
     
       view.getConfig().sayHello();
       view.initialize(context, zoomgContainer.offsetLeft, zoomgContainer.offsetTop, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
-      window['VIEW'] = view;
     }).catch(err => {
       console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
     })
   });
 
   return (
-    <div id="zoomg-container" style={{width: 400, height: 300, overflow: 'scroll'}}>
+    <div id="zoomg-container-2" style={{width: 300, height: 200, overflow: 'scroll'}}>
     </div>
   );
 }
 
-export default ZoomgView;
+export default ZoomgView2;

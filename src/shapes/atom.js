@@ -102,6 +102,11 @@ export default class Atom extends Shape {
   renderContents(svg, svgComplexity) {
     svg.innerHTML = svgStrings[svgComplexity];
   }
+
+  getRenderString(detailLevel) {
+    return svgStrings[detailLevel];
+  }
+
 }
 
 /*
