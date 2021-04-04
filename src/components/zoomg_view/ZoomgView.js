@@ -4,10 +4,8 @@ import './ZoomgView.css';
 const ZoomgView = forwardRef((props, ref) => {
 
   let thisView;
-  console.log(`~~~~1 executing useImperativeHandle`);
   useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
     moveShape(shapeId, percentX, percentY) {
-      console.log(`~~~~1 moveShape ${shapeId} ${percentX}/${percentY}`);
       thisView.moveShape(shapeId, percentX, percentY);
     }
   }))
@@ -15,18 +13,29 @@ const ZoomgView = forwardRef((props, ref) => {
   useEffect(() => {
     const Zoomg = window['Zoomg'];
     const Rectangle = Zoomg.Rectangle;
+    // const ZoomEvent = Zoomg.ZoomEvent;
+
+    // console.log(`**** ZOOM EVENT = ${ZoomEvent}`);
+    // for (var att in ZoomEvent) {
+    //   console.log(`        __ ${att}`);
+    // }
+    // const ze = new ZoomEvent(7, 7);
+    // console.log(`delta x/y = ${ze.getDeltaX()}/${ze.getDeltaY()}`);
+
+    // const ET = Zoomg.EventType;
+    // console.log(`**** ET = ${JSON.stringify(ET)}`);
+    // const z_type = ET.DRAG;
+    // console.log(`**** DRAG TYPE = ${z_type}`);
+    // console.log(`**** INVERSE = ${ET['4']}`);
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
     const onEvent = function(event) {
-      console.log(`~~~~1 onEvent: ${JSON.stringify(event)}`)
       props.onEvent(event);
     }
 
-
     Zoomg.createView(zoomgContainer, onEvent).then( (view) => {
       thisView = view;
-      console.log(`~~~~~~1 creating view - ${thisView}`);
       const context = new Rectangle("top-top", 0, 0, view);
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {

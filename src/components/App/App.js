@@ -41,21 +41,17 @@ function App() {
 
 
   function zoomgEvent(event) {
-    console.log(`**********1 incoming event ${JSON.stringify(event)} ****************`);
-    if (event.name === 'SHAPE_MOVE') {
-      zoomg2Ref.current && zoomg2Ref.current.moveShape(event.details.id, event.details.x, event.details.y);
-    } else {
-      console.log(`\n\n ****** EVENT WAS NOT "SHAPE_MOVE" ???`);
-    }
+//    if (event.name === 'SHAPE_MOVE') {
+  // zoomg2Ref.current && zoomg2Ref.current.moveShape(event.details.id, event.details.x, event.details.y);
+  zoomg2Ref.current && zoomg2Ref.current.moveShape(event.id, event.x, event.y);
+ //   }
   }
 
   function zoomg2Event(event) {
-    console.log(`**********2 incoming event ${JSON.stringify(event)} ****************`);
-    if (event.name === 'SHAPE_MOVE') {
-      zoomgRef.current && zoomgRef.current.moveShape(event.details.id, event.details.x, event.details.y);
-    } else {
-      console.log(`\n\n ****** EVENT WAS NOT "SHAPE_MOVE" ???`);
-    }
+    // if (event.name === 'SHAPE_MOVE') {
+    //   zoomgRef.current && zoomgRef.current.moveShape(event.details.id, event.details.x, event.details.y);
+    zoomgRef.current && zoomgRef.current.moveShape(event.id, event.x, event.y);
+    // }
   }
 
 

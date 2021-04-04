@@ -5,10 +5,8 @@ import './ZoomgView2.css';
 const ZoomgView2 = forwardRef((props, ref) => {
 
   let thisView;
-  console.log(`~~~~2 executing useImperativeHandle`);
   useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
     moveShape(shapeId, percentX, percentY) {
-      console.log(`~~~~2 moveShape ${shapeId} ${percentX}/${percentY}`);
       thisView.moveShape(shapeId, percentX, percentY);
     }
   }))
@@ -20,13 +18,11 @@ const ZoomgView2 = forwardRef((props, ref) => {
     const zoomgContainer = document.getElementById("zoomg-container-2");
 
     const onEvent = function(event) {
-      console.log(`~~~~2 onEvent: ${JSON.stringify(event)}`)
       props.onEvent(event);
     }
 
     Zoomg.createView(zoomgContainer, onEvent).then( (view) => {
       thisView = view;
-      console.log(`~~~~~~2 creating view - ${thisView}`);
       const context = new Rectangle("top-top", 0, 0, view);
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {
