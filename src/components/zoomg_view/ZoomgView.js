@@ -7,6 +7,9 @@ const ZoomgView = forwardRef((props, ref) => {
   useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
     moveShape(shapeId, percentX, percentY) {
       thisView.moveShape(shapeId, percentX, percentY);
+    },
+    performZoom(zoomEvent) {
+      thisView.performZoom(zoomEvent);
     }
   }))
 
@@ -30,11 +33,19 @@ const ZoomgView = forwardRef((props, ref) => {
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
-    const onEvent = function(event) {
-      props.onEvent(event);
+    const onZoom= function(event) {
+      props.onZoom(event);
     }
 
-    Zoomg.createView(zoomgContainer, onEvent).then( (view) => {
+    const onPan= function(event) {
+      props.onPan(event);
+    }
+
+    const onShapeDrag= function(event) {
+      props.onShapeDrag(event);
+    }
+
+    Zoomg.createView(zoomgContainer, onZoom, null, onShapeDrag).then( (view) => {
       thisView = view;
       const context = new Rectangle("top-top", 0, 0, view);
       const scalesByType = {};
@@ -54,7 +65,7 @@ const ZoomgView = forwardRef((props, ref) => {
   });
 
   return (
-    <div id="zoomg-container" style={{width: 400, height: 300, overflow: 'scroll'}}>
+    <div id="zoomg-container" style={{width: 400, height: 300}}>
     </div>
   );
 })
