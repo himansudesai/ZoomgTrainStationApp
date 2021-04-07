@@ -6,10 +6,10 @@ const ZoomgView = forwardRef((props, ref) => {
   let thisView;
   useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
     moveShape(shapeId, percentX, percentY) {
-      thisView.moveShape(shapeId, percentX, percentY);
+      thisView.apiMoveShape(shapeId, percentX, percentY);
     },
-    performZoom(zoomEvent) {
-      thisView.performZoom(zoomEvent);
+    zoomView(zoomEvent) {
+      thisView.apiZoom(zoomEvent);
     }
   }))
 

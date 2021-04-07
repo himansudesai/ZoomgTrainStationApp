@@ -5,12 +5,12 @@ import './ZoomgView2.css';
 const ZoomgView2 = forwardRef((props, ref) => {
 
   let thisView;
-  useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
-    moveShape(shapeId, percentX, percentY) {
-      thisView.moveShape(shapeId, percentX, percentY);
+  useImperativeHandle(ref, (event) => ({
+    moveShape(event) {
+      thisView.apiMoveShape(event);
     },
-    performZoom(zoomEvent) {
-      thisView.performZoom(zoomEvent);
+    zoomView(event) {
+      thisView.apiZoom(event);
     }
   }))
 

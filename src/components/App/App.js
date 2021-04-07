@@ -31,35 +31,28 @@ function App() {
   });
   data.push({
     id: "Rectangle1",
-    x: 65,
-    y: 45,
+    x: 80,
+    y: 80,
     typeName: "Rectangles"
   });
 
   let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
-
   function view1ShapeDragEvent(event) {
-//    if (event.name === 'SHAPE_MOVE') {
-  // zoomg2Ref.current && zoomg2Ref.current.moveShape(event.details.id, event.details.x, event.details.y);
-  zoomg2Ref.current && zoomg2Ref.current.moveShape(event.id, event.x, event.y);
- //   }
+    zoomg2Ref.current && zoomg2Ref.current.moveShape(event);
   }
 
   function view2ShapeDragEvent(event) {
-    // if (event.name === 'SHAPE_MOVE') {
-    //   zoomgRef.current && zoomgRef.current.moveShape(event.details.id, event.details.x, event.details.y);
-    zoomgRef.current && zoomgRef.current.moveShape(event.id, event.x, event.y);
-    // }
+    zoomgRef.current && zoomgRef.current.moveShape(event);
   }
 
   function view1ZoomEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.performZoom(event);
+    zoomg2Ref.current && zoomg2Ref.current.zoomView(event);
   }
 
   function view2ZoomEvent(event) {
-    zoomgRef.current && zoomgRef.current.performZoom(event);
+    zoomgRef.current && zoomgRef.current.zoomView(event);
   }
 
   return (
