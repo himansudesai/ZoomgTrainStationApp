@@ -10,7 +10,10 @@ const ZoomgView2 = forwardRef((props, ref) => {
       thisView.apiMoveShape(event);
     },
     zoomView(event) {
-      thisView.apiZoom(event);
+      thisView.apiZoomView(event);
+    },
+    panView(event) {
+      thisView.apiPanView(event);
     }
   }))
 
@@ -21,18 +24,18 @@ const ZoomgView2 = forwardRef((props, ref) => {
     const zoomgContainer = document.getElementById("zoomg-container-2");
 
     const onZoom= function(event) {
-      props.onZoom(event);
+      props.onZoom && props.onZoom(event);
     }
 
     const onPan= function(event) {
-      props.onPan(event);
+      props.onPan && props.onPan(event);
     }
 
     const onShapeDrag= function(event) {
-      props.onShapeDrag(event);
+      props.onShapeDrag && props.onShapeDrag(event);
     }
 
-    Zoomg.createView(zoomgContainer, onZoom, null, onShapeDrag).then( (view) => {
+    Zoomg.createView(zoomgContainer, onZoom, onPan, onShapeDrag).then( (view) => {
       thisView = view;
       const context = new Rectangle("top-top", 0, 0, view);
       const scalesByType = {};
@@ -52,7 +55,7 @@ const ZoomgView2 = forwardRef((props, ref) => {
   });
 
   return (
-    <div id="zoomg-container-2" style={{width: 300, height: 225}}>
+    <div id="zoomg-container-2" style={{width: 600, height: 300}}>
     </div>
   );
 })

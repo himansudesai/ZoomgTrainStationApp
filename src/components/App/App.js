@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Atom from '../../shapes/atom';
 import Rectangles from '../../shapes/rectangles';
+import Engine from '../../shapes/engine';
 import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
@@ -9,32 +10,44 @@ function App() {
   const metadata = {
     Atom: {
       type: Atom,
-      percentSize: 8
+      percentSize: 1
     },
     Rectangles: {
       type: Rectangles,
-      percentSize: 8
+      percentSize: 1
+    },
+    Engine: {
+      type: Engine,
+      percentSize: 1
     }
   };
   const data = [];
-  data.push({
-    id: "Atom1",
-    x: 15,
-    y: 15,
-    typeName: "Atom"
-  });
-  data.push({
-    id: "Atom2",
-    x: 45,
-    y: 45,
-    typeName: "Atom"
-  });
-  data.push({
-    id: "Rectangle1",
-    x: 80,
-    y: 80,
-    typeName: "Rectangles"
-  });
+  for (let i=0; i<2; i++) {
+    let x = Math.floor(Math.random() * 90 + 5);
+    let y = Math.floor(Math.random() * 90 + 5);
+    data.push({
+      id: `Atom${i}`,
+      x: x,
+      y: y,
+      typeName: "Atom"
+    });
+    x = Math.floor(Math.random() * 90 + 5);
+    y = Math.floor(Math.random() * 90 + 5);
+    data.push({
+      id: `Engine${i}`,
+      x: x,
+      y: y,
+      typeName: "Engine"
+    });
+    x = Math.floor(Math.random() * 90 + 5);
+    y = Math.floor(Math.random() * 90 + 5);
+    data.push({
+      id: `Rectangle${i}`,
+      x: x,
+      y: y,
+      typeName: "Rectangles"
+    });
+  }
 
   let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
@@ -55,18 +68,26 @@ function App() {
     zoomgRef.current && zoomgRef.current.zoomView(event);
   }
 
+  function view1PanEvent(event) {
+    zoomg2Ref.current && zoomg2Ref.current.panView(event);
+  }
+
+  function view2PanEvent(event) {
+    zoomgRef.current && zoomgRef.current.panView(event);
+  }
+
   return (
     <React.Fragment>
       <h1>Hello</h1>
       <div style={{marginLeft: '20px'}}>
         &nbsp;
-        <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoom={view1ZoomEvent} onShapeDrag={view1ShapeDragEvent}></ZoomgView>
+        <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoom={view1ZoomEvent} onShapeDrag={view1ShapeDragEvent} onPan={view1PanEvent}></ZoomgView>
       </div>
       <div style={{marginLeft: '50px'}}>
-        &nbsp;
-        <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoom={view2ZoomEvent} onShapeDrag={view2ShapeDragEvent}></ZoomgView2>
-      </div>
-      <h1>Zoomg</h1>
+       &nbsp;
+       <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoom={view2ZoomEvent} onShapeDrag={view2ShapeDragEvent} onPan={view2PanEvent}></ZoomgView2>
+     </div>
+     <h1>Zoomg</h1>
     </React.Fragment>
   );
 }

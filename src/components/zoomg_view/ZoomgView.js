@@ -4,48 +4,37 @@ import './ZoomgView.css';
 const ZoomgView = forwardRef((props, ref) => {
 
   let thisView;
-  useImperativeHandle(ref, (shapeId, percentX, percentY) => ({
-    moveShape(shapeId, percentX, percentY) {
-      thisView.apiMoveShape(shapeId, percentX, percentY);
+  useImperativeHandle(ref, (event) => ({
+    moveShape(event) {
+      thisView.apiMoveShape(event);
     },
-    zoomView(zoomEvent) {
-      thisView.apiZoom(zoomEvent);
+    zoomView(event) {
+      thisView.apiZoomView(event);
+    },
+    panView(event) {
+      thisView.apiPanView(event);
     }
   }))
 
   useEffect(() => {
     const Zoomg = window['Zoomg'];
     const Rectangle = Zoomg.Rectangle;
-    // const ZoomEvent = Zoomg.ZoomEvent;
-
-    // console.log(`**** ZOOM EVENT = ${ZoomEvent}`);
-    // for (var att in ZoomEvent) {
-    //   console.log(`        __ ${att}`);
-    // }
-    // const ze = new ZoomEvent(7, 7);
-    // console.log(`delta x/y = ${ze.getDeltaX()}/${ze.getDeltaY()}`);
-
-    // const ET = Zoomg.EventType;
-    // console.log(`**** ET = ${JSON.stringify(ET)}`);
-    // const z_type = ET.DRAG;
-    // console.log(`**** DRAG TYPE = ${z_type}`);
-    // console.log(`**** INVERSE = ${ET['4']}`);
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
     const onZoom= function(event) {
-      props.onZoom(event);
+      props.onZoom && props.onZoom(event);
     }
 
     const onPan= function(event) {
-      props.onPan(event);
+      props.onPan && props.onPan(event);
     }
 
     const onShapeDrag= function(event) {
-      props.onShapeDrag(event);
+      props.onShapeDrag && props.onShapeDrag(event);
     }
 
-    Zoomg.createView(zoomgContainer, onZoom, null, onShapeDrag).then( (view) => {
+    Zoomg.createView(zoomgContainer, onZoom, onPan, onShapeDrag).then( (view) => {
       thisView = view;
       const context = new Rectangle("top-top", 0, 0, view);
       const scalesByType = {};
@@ -65,7 +54,7 @@ const ZoomgView = forwardRef((props, ref) => {
   });
 
   return (
-    <div id="zoomg-container" style={{width: 400, height: 300}}>
+    <div id="zoomg-container" style={{width: 800, height: 400}}>
     </div>
   );
 })
