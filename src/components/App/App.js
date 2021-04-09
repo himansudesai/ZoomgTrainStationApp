@@ -3,6 +3,7 @@ import './App.css';
 import Atom from '../../shapes/atom';
 import Rectangles from '../../shapes/rectangles';
 import Engine from '../../shapes/engine';
+import ShoppingCart from '../../shapes/shopping-cart';
 import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
@@ -14,15 +15,19 @@ function App() {
     },
     Rectangles: {
       type: Rectangles,
-      percentSize: 1
+      percentSize: 3
     },
     Engine: {
       type: Engine,
       percentSize: 1
+    },
+    ShoppingCart: {
+      type: ShoppingCart,
+      percentSize: 5
     }
   };
   const data = [];
-  for (let i=0; i<2; i++) {
+  for (let i=0; i<1; i++) {
     let x = Math.floor(Math.random() * 90 + 5);
     let y = Math.floor(Math.random() * 90 + 5);
     data.push({
@@ -46,6 +51,14 @@ function App() {
       x: x,
       y: y,
       typeName: "Rectangles"
+    });
+    x = Math.floor(Math.random() * 90 + 5);
+    y = Math.floor(Math.random() * 90 + 5);
+    data.push({
+      id: `ShoppingCart${i}`,
+      x: x,
+      y: y,
+      typeName: "ShoppingCart"
     });
   }
 
