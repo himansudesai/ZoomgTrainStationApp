@@ -43,15 +43,21 @@ const ZoomgView2 = forwardRef((props, ref) => {
 
       const shapes = [];
       props.data.forEach(data => {
-        let shape = new props.metadata[data.typeName].type(data.id, data.x, data.y, view, scalesByType[data.typeName]);
+        const shape = new props.metadata[data.typeName].type(data.id, data.x, data.y, view, scalesByType[data.typeName]);
         shapes.push(shape);
+        if (data.subShapes) {
+          data.subShapes.forEach( (sub) => {
+            const subShape = new props.metadata[sub.typeName].type(sub.id);
+            shape.addSubShape(subShape, sub.x, sub.y, view);
+          })
+        }
       })
 
       view.initialize(shapes, zoomgContainer.offsetLeft, zoomgContainer.offsetTop, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
     }).catch(err => {
       console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
     })
-  });
+  }, []);
 
   return (
     <div id="zoomg-container-2" style={{width: 600, height: 300}}>

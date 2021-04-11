@@ -1,5 +1,4 @@
 const Zoomg = window.Zoomg;
-const Config = Zoomg.Config;
 const Shape = Zoomg.Shape;
 const SVGComplexity = Zoomg.SVGComplexity;
 
@@ -84,5 +83,3 @@ export default class ShoppingCart extends Shape {
   }
 
 }
-
-{/* <circle cx="50" cy="50" r="40" fill="#edff12" stroke="#ff80d5" stroke-width="10" stroke-dasharray="40 20"></circle> */}

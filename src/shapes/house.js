@@ -1,5 +1,4 @@
 const Zoomg = window.Zoomg;
-const Config = Zoomg.Config;
 const Shape = Zoomg.Shape;
 const SVGComplexity = Zoomg.SVGComplexity;
 

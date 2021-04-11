@@ -4,6 +4,7 @@ import Atom from '../../shapes/atom';
 import Rectangles from '../../shapes/rectangles';
 import Engine from '../../shapes/engine';
 import ShoppingCart from '../../shapes/shopping-cart';
+import SoccerBall from '../../shapes/soccer-ball';
 import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
@@ -24,6 +25,9 @@ function App() {
     ShoppingCart: {
       type: ShoppingCart,
       percentSize: 5
+    },
+    SoccerBall: {
+      type: SoccerBall
     }
   };
   const data = [];
@@ -58,7 +62,19 @@ function App() {
       id: `ShoppingCart${i}`,
       x: x,
       y: y,
-      typeName: "ShoppingCart"
+      typeName: "ShoppingCart",
+      subShapes: [{
+        id: `SoccerBall${i}1`,
+        x: 10,
+        y: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}2`,
+        x: 60,
+        y: 60,
+        typeName: "SoccerBall"
+      }]
     });
   }
 
