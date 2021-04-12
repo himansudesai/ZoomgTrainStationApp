@@ -24,7 +24,7 @@ function App() {
     },
     ShoppingCart: {
       type: ShoppingCart,
-      percentSize: 5
+      percentSize: 10
     },
     SoccerBall: {
       type: SoccerBall
@@ -34,45 +34,110 @@ function App() {
   for (let i=0; i<1; i++) {
     let x = Math.floor(Math.random() * 90 + 5);
     let y = Math.floor(Math.random() * 90 + 5);
-    data.push({
-      id: `Atom${i}`,
-      x: x,
-      y: y,
-      typeName: "Atom"
-    });
-    x = Math.floor(Math.random() * 90 + 5);
-    y = Math.floor(Math.random() * 90 + 5);
-    data.push({
-      id: `Engine${i}`,
-      x: x,
-      y: y,
-      typeName: "Engine"
-    });
-    x = Math.floor(Math.random() * 90 + 5);
-    y = Math.floor(Math.random() * 90 + 5);
-    data.push({
-      id: `Rectangle${i}`,
-      x: x,
-      y: y,
-      typeName: "Rectangles"
-    });
+    // data.push({
+    //   id: `Atom${i}`,
+    //   x: x,
+    //   y: y,
+    //   typeName: "Atom"
+    // });
+    // x = Math.floor(Math.random() * 90 + 5);
+    // y = Math.floor(Math.random() * 90 + 5);
+    // data.push({
+    //   id: `Engine${i}`,
+    //   x: x,
+    //   y: y,
+    //   typeName: "Engine"
+    // });
+    // x = Math.floor(Math.random() * 90 + 5);
+    // y = Math.floor(Math.random() * 90 + 5);
+    // data.push({
+    //   id: `Rectangle${i}`,
+    //   x: x,
+    //   y: y,
+    //   typeName: "Rectangles"
+    // });
     x = Math.floor(Math.random() * 90 + 5);
     y = Math.floor(Math.random() * 90 + 5);
     data.push({
       id: `ShoppingCart${i}`,
-      x: x,
-      y: y,
+      x: 10,
+      y: 10,
       typeName: "ShoppingCart",
       subShapes: [{
         id: `SoccerBall${i}1`,
-        x: 10,
-        y: 10,
+        x: 0,
+        y: 0,
+        size: 10,
         typeName: "SoccerBall"
       },
       {
         id: `SoccerBall${i}2`,
+        x: 10,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}3`,
+        x: 20,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}4`,
+        x: 30,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}5`,
+        x: 40,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}6`,
+        x: 50,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}7`,
         x: 60,
-        y: 60,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}8`,
+        x: 70,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}9`,
+        x: 80,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}10`,
+        x: 90,
+        y: 0,
+        size: 10,
+        typeName: "SoccerBall"
+      },
+      {
+        id: `SoccerBall${i}99`,
+        x: 90,
+        y: 90,
+        size: 10,
         typeName: "SoccerBall"
       }]
     });

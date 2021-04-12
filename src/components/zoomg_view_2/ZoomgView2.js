@@ -48,7 +48,7 @@ const ZoomgView2 = forwardRef((props, ref) => {
         if (data.subShapes) {
           data.subShapes.forEach( (sub) => {
             const subShape = new props.metadata[sub.typeName].type(sub.id);
-            shape.addSubShape(subShape, sub.x, sub.y, view);
+            shape.addSubShape(subShape, sub.x, sub.y, sub.size);
           })
         }
       })
@@ -60,7 +60,7 @@ const ZoomgView2 = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <div id="zoomg-container-2" style={{width: 600, height: 300}}>
+    <div id="zoomg-container-2" style={{width: 800, height: 400}}>
     </div>
   );
 })
