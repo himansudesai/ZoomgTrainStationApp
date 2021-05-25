@@ -17,6 +17,9 @@ const ZoomgView2 = forwardRef((props, ref) => {
     },
     rubberBandEvent(event) {
       thisView.apiRubberBand(event);
+    },
+    zoomgEvent(event) {
+      thisView.apiZoomgEvent(event);
     }
 
   }))
@@ -42,7 +45,11 @@ const ZoomgView2 = forwardRef((props, ref) => {
       props.onRubberBand && props.onRubberBand(event);
     }
 
-    Zoomg.createView(zoomgContainer, onZoom, onPan, onShapeDrag, onRubberBand).then( (view) => {
+    const onZoomgEvent = function(event) {
+      props.onZoomgEvent && props.onZoomgEvent(event);
+    }
+
+    Zoomg.createView(zoomgContainer, onZoom, onPan, onShapeDrag, onRubberBand, onZoomgEvent).then( (view) => {
       thisView = view;
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {

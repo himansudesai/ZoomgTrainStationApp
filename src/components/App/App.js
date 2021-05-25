@@ -152,7 +152,7 @@ function App() {
           id: `${bottomtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
           y: Math.floor(Math.random() * 80),
-          size: Math.floor(Math.random() * 5) + 3,
+          size: Math.floor(Math.random() * 2) + 7,
           typeName: bottomtype
         };
         bottoms.push(bottom);
@@ -168,11 +168,12 @@ function App() {
           id: `${subsubtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
           y: Math.floor(Math.random() * 80),
-          size: Math.floor(Math.random() * 5) + 3,
+          size: Math.floor(Math.random() * 2) + 7,
           typeName: subsubtype
         };
         let bottomShapes = [];
-        ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
+        // ['Glasses'].forEach(bottomtype => {
+          ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
           bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
         })
         subsub["subShapes"] = bottomShapes;
@@ -188,11 +189,12 @@ function App() {
           id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
           y: Math.floor(Math.random() * 80),
-          size: Math.floor(Math.random() * 5) + 3,
+          size: Math.floor(Math.random() * 2) + 7,
           typeName: subtype
         };
         let subsubShapes = [];
-        ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+        // ['Ninja'].forEach(subsubtype => {
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
         sub["subShapes"] = subsubShapes;
@@ -202,7 +204,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<1; i++) {
+    for (let i=0; i<10; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 90),
@@ -211,7 +213,8 @@ function App() {
         colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
       let subShapes = [];
-      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
+      // ['Bus'].forEach(subtype => {
+        ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
         subShapes = subShapes.concat(createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
@@ -221,41 +224,50 @@ function App() {
   }
 
   let data = [];
+  // ['Church'].forEach(type => data = data.concat(createTopLevelShape(type)));
   ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
   let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
   function view1ShapeDragEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.moveShape(event);
+    // zoomg2Ref.current && zoomg2Ref.current.moveShape(event);
   }
 
   function view2ShapeDragEvent(event) {
-    zoomgRef.current && zoomgRef.current.moveShape(event);
+    // zoomgRef.current && zoomgRef.current.moveShape(event);
   }
 
   function view1ZoomEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.zoomView(event);
+    // zoomg2Ref.current && zoomg2Ref.current.zoomView(event);
   }
 
   function view2ZoomEvent(event) {
-    zoomgRef.current && zoomgRef.current.zoomView(event);
+    // zoomgRef.current && zoomgRef.current.zoomView(event);
   }
 
   function view1PanEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.panView(event);
+    // zoomg2Ref.current && zoomg2Ref.current.panView(event);
   }
 
   function view2PanEvent(event) {
-    zoomgRef.current && zoomgRef.current.panView(event);
+    // zoomgRef.current && zoomgRef.current.panView(event);
   }
 
   function view1RubberBandEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.rubberBandEvent(event);
+    // zoomg2Ref.current && zoomg2Ref.current.rubberBandEvent(event);
   }
 
   function view2RubberBandEvent(event) {
-    zoomgRef.current && zoomgRef.current.rubberBandEvent(event);
+    // zoomgRef.current && zoomgRef.current.rubberBandEvent(event);
+  }
+
+  function view1ZoomgEvent(event) {
+    zoomg2Ref.current && zoomg2Ref.current.zoomgEvent(event);
+  }
+
+  function view2ZoomgEvent(event) {
+    zoomgRef.current && zoomgRef.current.zoomgEvent(event);
   }
 
   return (
@@ -263,11 +275,13 @@ function App() {
       <h1>Hello</h1>
       <div style={{marginLeft: '30px'}}>
         &nbsp;
-        <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoom={view1ZoomEvent} onShapeDrag={view1ShapeDragEvent} onPan={view1PanEvent} onRubberBand={view1RubberBandEvent}></ZoomgView>
+        {/* <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoom={view1ZoomEvent} onShapeDrag={view1ShapeDragEvent} onPan={view1PanEvent} onRubberBand={view1RubberBandEvent}></ZoomgView> */}
+        <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
       </div>
       <div style={{marginLeft: '30px'}}>
        &nbsp;
-       <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoom={view2ZoomEvent} onShapeDrag={view2ShapeDragEvent} onPan={view2PanEvent}  onRubberBand={view2RubberBandEvent}></ZoomgView2>
+       {/* <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoom={view2ZoomEvent} onShapeDrag={view2ShapeDragEvent} onPan={view2PanEvent}  onRubberBand={view2RubberBandEvent}></ZoomgView2> */}
+       <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
      </div>
      <h1>Zoomg</h1>
     </React.Fragment>
