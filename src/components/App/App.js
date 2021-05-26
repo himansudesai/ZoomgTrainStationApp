@@ -142,7 +142,6 @@ function App() {
     }
   };
 
-
   function createTopLevelShape(type) {
 
     function createBottomShapes(bottomtype) {
@@ -230,38 +229,6 @@ function App() {
   let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
-  function view1ShapeDragEvent(event) {
-    // zoomg2Ref.current && zoomg2Ref.current.moveShape(event);
-  }
-
-  function view2ShapeDragEvent(event) {
-    // zoomgRef.current && zoomgRef.current.moveShape(event);
-  }
-
-  function view1ZoomEvent(event) {
-    // zoomg2Ref.current && zoomg2Ref.current.zoomView(event);
-  }
-
-  function view2ZoomEvent(event) {
-    // zoomgRef.current && zoomgRef.current.zoomView(event);
-  }
-
-  function view1PanEvent(event) {
-    // zoomg2Ref.current && zoomg2Ref.current.panView(event);
-  }
-
-  function view2PanEvent(event) {
-    // zoomgRef.current && zoomgRef.current.panView(event);
-  }
-
-  function view1RubberBandEvent(event) {
-    // zoomg2Ref.current && zoomg2Ref.current.rubberBandEvent(event);
-  }
-
-  function view2RubberBandEvent(event) {
-    // zoomgRef.current && zoomgRef.current.rubberBandEvent(event);
-  }
-
   function view1ZoomgEvent(event) {
     zoomg2Ref.current && zoomg2Ref.current.zoomgEvent(event);
   }
@@ -275,12 +242,10 @@ function App() {
       <h1>Hello</h1>
       <div style={{marginLeft: '30px'}}>
         &nbsp;
-        {/* <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoom={view1ZoomEvent} onShapeDrag={view1ShapeDragEvent} onPan={view1PanEvent} onRubberBand={view1RubberBandEvent}></ZoomgView> */}
         <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
       </div>
       <div style={{marginLeft: '30px'}}>
        &nbsp;
-       {/* <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoom={view2ZoomEvent} onShapeDrag={view2ShapeDragEvent} onPan={view2PanEvent}  onRubberBand={view2RubberBandEvent}></ZoomgView2> */}
        <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
      </div>
      <h1>Zoomg</h1>

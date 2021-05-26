@@ -5,18 +5,6 @@ const ZoomgView = forwardRef((props, ref) => {
 
   let thisView;
   useImperativeHandle(ref, (event) => ({
-    moveShape(event) {
-      thisView.apiMoveShape(event);
-    },
-    zoomView(event) {
-      thisView.apiZoomView(event);
-    },
-    panView(event) {
-      thisView.apiPanView(event);
-    },
-    rubberBandEvent(event) {
-      thisView.apiRubberBand(event);
-    },
     zoomgEvent(event) {
       thisView.apiZoomgEvent(event);
     }
@@ -27,29 +15,13 @@ const ZoomgView = forwardRef((props, ref) => {
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
-    const onZoom = function(event) {
-      props.onZoom && props.onZoom(event);
-    }
-
-    const onPan = function(event) {
-      props.onPan && props.onPan(event);
-    }
-
-    const onShapeDrag = function(event) {
-      props.onShapeDrag && props.onShapeDrag(event);
-    }
-
-    const onRubberBand = function(event) {
-      props.onRubberBand && props.onRubberBand(event);
-    }
-
     const onZoomgEvent = function(event) {
       props.onZoomgEvent && props.onZoomgEvent(event);
     }
 
 
 
-    Zoomg.createView(zoomgContainer, onZoom, onPan, onShapeDrag, onRubberBand, onZoomgEvent).then( (view) => {
+    Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
       thisView = view;
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {
