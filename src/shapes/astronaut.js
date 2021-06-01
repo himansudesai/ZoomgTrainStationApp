@@ -63,21 +63,17 @@ export default class Astronaut extends Shape {
     this.blue = colors[2];
   }
 
-  setName(name) {
-    this.name = name;
-  }
-
   getTypeName() {
     return "Astronaut";
   }
 
   renderContents(svg, svgComplexity) {
     const strs = svgStrings[svgComplexity];
-    svg.innerHTML = `${strs[0]} fill="rgb(${this.red},${this.green},${this.blue})" ${strs[1]} ${this.name} ${strs[2]}`;
+    svg.innerHTML = `${strs[0]} fill="rgb(${this.red},${this.green},${this.blue})" ${strs[1]} ${this.getAttr('name')} ${strs[2]}`;
   }
 
   getRenderString(detailLevel) {
     const strs = svgStrings[detailLevel];
-    return `${strs[0]} fill="rgb(${this.red},${this.green},${this.blue})" ${strs[1]} ${this.name} ${strs[2]}`;
+    return `${strs[0]} fill="rgb(${this.red},${this.green},${this.blue})" ${strs[1]} ${this.getAttr('name')} ${strs[2]}`;
  }
 }

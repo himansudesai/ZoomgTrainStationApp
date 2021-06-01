@@ -32,6 +32,9 @@ import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
 function App() {
+  const astronautId = React.createRef();
+  const astronautName = React.createRef();
+
   const metadata = {
     Atom: {
       type: Atom,
@@ -159,7 +162,6 @@ function App() {
       return bottoms;
     }
 
-
     function createSubSubShapes(subsubtype) {
       let subsubs = [];
       for (let j=0; j<5; j++) {
@@ -169,13 +171,14 @@ function App() {
           x: Math.floor(Math.random() * 80),
           y: Math.floor(Math.random() * 80),
           size: Math.floor(Math.random() * 2) + 7,
-          typeName: subsubtype
+          typeName: subsubtype,
         };
         if (subsubtype === 'Astronaut') {
-          subsub["name"] = `A:${seq}`;
+          subsub.attrs = {
+            name: `A:${seq}`
+          }
         }
         let bottomShapes = [];
-        // ['Glasses'].forEach(bottomtype => {
           ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
           bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
         })
@@ -196,7 +199,6 @@ function App() {
           typeName: subtype
         };
         let subsubShapes = [];
-        // ['Ninja'].forEach(subsubtype => {
           ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
@@ -242,6 +244,10 @@ function App() {
     zoomgRef.current && zoomgRef.current.zoomgEvent(event);
   }
 
+  function changeNinjaName() {
+    zoomgRef.current && zoomgRef.current.changeAstronautName(astronautId.current.value, astronautName.current.value);
+  }
+
   return (
     <React.Fragment>
       <h2>ZOOMG</h2>
@@ -251,7 +257,10 @@ function App() {
           <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
         </div>
         <br/>
-        <button>Break Glass</button><input></input><button>&gt;&gt;</button><input></input>
+        <button>Break Glass</button>
+        <input ref={astronautId}></input>
+        <button onClick={changeNinjaName}>&gt;&gt;</button>
+        <input ref={astronautName}></input>
         <div>
           &nbsp;
           <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
@@ -262,4 +271,3 @@ function App() {
 }
 
 export default App;
-

@@ -43,8 +43,10 @@ const ZoomgView2 = forwardRef((props, ref) => {
               sub.subShapes.forEach( (subsub) => {
                 const subsubShape = new props.metadata[subsub.typeName].type(subsub.id);
                 subsubShape.setColors(shapeColors);
-                if (subsubShape.getTypeName() === 'Astronaut') {
-                  subsubShape.setName(subsub.name);
+                if (subsub.attrs) {
+                  Object.keys(subsub.attrs).forEach(key => {
+                    subsubShape.setAttr(key, subsub.attrs[key]);
+                  })
                 }
                 subShape.addSubShape(view, subsubShape, subsub.x, subsub.y, subsub.size);
                 if (subsub.subShapes) {
