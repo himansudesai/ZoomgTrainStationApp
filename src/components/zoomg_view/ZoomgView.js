@@ -19,8 +19,6 @@ const ZoomgView = forwardRef((props, ref) => {
       props.onZoomgEvent && props.onZoomgEvent(event);
     }
 
-
-
     Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
       thisView = view;
       const scalesByType = {};
@@ -43,6 +41,9 @@ const ZoomgView = forwardRef((props, ref) => {
               sub.subShapes.forEach( (subsub) => {
                 const subsubShape = new props.metadata[subsub.typeName].type(subsub.id);
                 subsubShape.setColors(shapeColors);
+                if (subsubShape.getTypeName() === 'Astronaut') {
+                  subsubShape.setName(subsub.name);
+                }
                 subShape.addSubShape(view, subsubShape, subsub.x, subsub.y, subsub.size);
                 if (subsub.subShapes) {
                   subsub.subShapes.forEach( (bottom) => {

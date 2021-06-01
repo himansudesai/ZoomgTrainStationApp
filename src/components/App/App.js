@@ -119,7 +119,7 @@ function App() {
     },
     Astronaut: {
       type: Astronaut,
-      percentSize: 0.011
+      percentSize: 0.008
     },
     Doctor: {
       type: Doctor,
@@ -163,13 +163,17 @@ function App() {
     function createSubSubShapes(subsubtype) {
       let subsubs = [];
       for (let j=0; j<5; j++) {
+        const seq = Math.floor(Math.random() * 1000000);
         let subsub = {
-          id: `${subsubtype}${Math.floor(Math.random() * 1000000)}`,
+          id: `${subsubtype}${seq}`,
           x: Math.floor(Math.random() * 80),
           y: Math.floor(Math.random() * 80),
           size: Math.floor(Math.random() * 2) + 7,
           typeName: subsubtype
         };
+        if (subsubtype === 'Astronaut') {
+          subsub["name"] = `A:${seq}`;
+        }
         let bottomShapes = [];
         // ['Glasses'].forEach(bottomtype => {
           ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
@@ -196,6 +200,7 @@ function App() {
           ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
+        
         sub["subShapes"] = subsubShapes;
         subs.push(sub);
       }
@@ -239,16 +244,19 @@ function App() {
 
   return (
     <React.Fragment>
-      <h1>Hello</h1>
+      <h2>ZOOMG</h2>
       <div style={{marginLeft: '30px'}}>
-        &nbsp;
-        <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
+        <div>
+          &nbsp;
+          <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
+        </div>
+        <br/>
+        <button>Break Glass</button><input></input><button>&gt;&gt;</button><input></input>
+        <div>
+          &nbsp;
+          <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
+        </div>
       </div>
-      <div style={{marginLeft: '30px'}}>
-       &nbsp;
-       <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
-     </div>
-     <h1>Zoomg</h1>
     </React.Fragment>
   );
 }
