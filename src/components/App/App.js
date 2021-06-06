@@ -21,15 +21,21 @@ import Hospital from '../../shapes/hospital';
 import Hotel from '../../shapes/hotel';
 import Hourglass  from '../../shapes/hourglass';
 import Landmark from '../../shapes/landmark';
+import Octagon from '../../shapes/octagon';
 import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
 import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
+import Triangle from '../../shapes/triangle';
 
 import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
+
+import Circle from '../../shapes/circle';
+import Hello from '../../shapes/hello';
+import Rect from '../../shapes/rect';
 
 function App() {
   const astronautId = React.createRef();
@@ -38,6 +44,26 @@ function App() {
   const metadata = {
     Atom: {
       type: Atom,
+      percentSize: 1
+    },
+    Circle: {
+      type: Circle,
+      percentSize: 1
+    },
+    Rect: {
+      type: Rect,
+      percentSize: 1
+    },
+    Triangle: {
+      type: Triangle,
+      percentSize: 1
+    },
+    Octagon: {
+      type: Octagon,
+      percentSize: 1
+    },
+    Hello: {
+      type: Hello,
       percentSize: 1
     },
     Rectangles: {
@@ -210,29 +236,27 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<10; i++) {
+    for (let i=0; i<800; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
-        x: Math.floor(Math.random() * 90),
-        y: Math.floor(Math.random() * 90),
+        x: Math.floor(Math.random() * 99),
+        y: Math.floor(Math.random() * 99),
         typeName: type,
         colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
       let subShapes = [];
-      // ['Bus'].forEach(subtype => {
-        ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
-        subShapes = subShapes.concat(createSubShapes(subtype));
-      })
-      topShape["subShapes"] = subShapes;
+        // ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
+        // subShapes = subShapes.concat(createSubShapes(subtype));
+      // })
+      // topShape["subShapes"] = subShapes;
       topShapes.push(topShape);
     }
     return topShapes;  
   }
 
   let data = [];
-  // ['Church'].forEach(type => data = data.concat(createTopLevelShape(type)));
-  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
-
+  ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
+//  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
   let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
@@ -248,6 +272,14 @@ function App() {
     zoomgRef.current && zoomgRef.current.changeAstronautName(astronautId.current.value, astronautName.current.value);
   }
 
+  function breakGlass() {
+    zoomgRef.current && zoomgRef.current.breakGlass();
+  }
+
+  function autoZoom() {
+    zoomgRef.current && zoomgRef.current.autoZoom();
+  }
+
   return (
     <React.Fragment>
       <h2>ZOOMG</h2>
@@ -257,13 +289,14 @@ function App() {
           <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
         </div>
         <br/>
-        <button>Break Glass</button>
+        <button onClick={breakGlass}>Break Glass</button>
         <input ref={astronautId}></input>
         <button onClick={changeNinjaName}>&gt;&gt;</button>
         <input ref={astronautName}></input>
+        <button onClick={autoZoom}>Auto Zoom</button>
         <div>
           &nbsp;
-          <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
+          {/* <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2> */}
         </div>
       </div>
     </React.Fragment>

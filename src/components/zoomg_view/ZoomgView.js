@@ -10,6 +10,12 @@ const ZoomgView = forwardRef((props, ref) => {
     },
     changeAstronautName(id, name) {
       thisView.setShapeAttr(`Astronaut${id}`, 'name', name, true);
+    },
+    breakGlass() {
+      thisView.tempAlert();
+    },
+    autoZoom() {
+      thisView.tempAutoZoom();
     }
   }))
 
@@ -18,11 +24,12 @@ const ZoomgView = forwardRef((props, ref) => {
     
     const zoomgContainer = document.getElementById("zoomg-container");
 
-    const onZoomgEvent = function(event) {
-      props.onZoomgEvent && props.onZoomgEvent(event);
-    }
+    // const onZoomgEvent = function(event) {
+    //   props.onZoomgEvent && props.onZoomgEvent(event);
+    // }
 
-    Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
+    Zoomg.createView(zoomgContainer, undefined).then( (view) => {
+      // Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
       thisView = view;
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {
@@ -76,8 +83,8 @@ const ZoomgView = forwardRef((props, ref) => {
     <div id="zoomg-container"
     style={
       {
-        width: 800,
-        height: 400,
+        width: 1200,
+        height: 600,
         background: "linear-gradient(90deg, rgba(232,250,250,1) 0%, rgba(231,249,232,1) 5%, rgba(233,245,249,1) 100%)"
       }
     }>
