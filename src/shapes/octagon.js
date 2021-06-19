@@ -6,7 +6,7 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
     [
-      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="1"`,
+      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="5"`,
       `></polygon>`
     ]
   ];
@@ -93,6 +93,8 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></polygon>`
     ]
   ];
+
+  svgStrings[SVGComplexity.Pixels140] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Octagon extends Shape {
   setColors(colors) {

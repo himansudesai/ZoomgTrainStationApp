@@ -44,27 +44,27 @@ function App() {
   const metadata = {
     Atom: {
       type: Atom,
-      percentSize: 1
+      percentSize: 3.3
     },
     Circle: {
       type: Circle,
-      percentSize: 1
+      percentSize: 2.8
     },
     Rect: {
       type: Rect,
-      percentSize: 1
+      percentSize: 2.6
     },
     Triangle: {
       type: Triangle,
-      percentSize: 1
+      percentSize: 3.0
     },
     Octagon: {
       type: Octagon,
-      percentSize: 1
+      percentSize: 3.6
     },
     Hello: {
       type: Hello,
-      percentSize: 1
+      percentSize: 2
     },
     Rectangles: {
       type: Rectangles,
@@ -175,7 +175,7 @@ function App() {
 
     function createBottomShapes(bottomtype) {
       let bottoms = [];
-      for (let j=0; j<5; j++) {
+      for (let j=0; j<2; j++) {
         let bottom = {
           id: `${bottomtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
@@ -184,13 +184,17 @@ function App() {
           typeName: bottomtype
         };
         bottoms.push(bottom);
+        if ((j == 1) && (!alertShape)) {
+          alertShape = bottom;
+          console.log(`============ SETTING ALERT SHAPE TO ${alertShape}`);
+        }
       }
       return bottoms;
     }
 
     function createSubSubShapes(subsubtype) {
       let subsubs = [];
-      for (let j=0; j<5; j++) {
+      for (let j=0; j<2; j++) {
         const seq = Math.floor(Math.random() * 1000000);
         let subsub = {
           id: `${subsubtype}${seq}`,
@@ -216,7 +220,7 @@ function App() {
 
     function createSubShapes(subtype) {
       let subs = [];
-      for (let j=0; j<5; j++) {
+      for (let j=0; j<3; j++) {
         let sub = {
           id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
@@ -224,19 +228,23 @@ function App() {
           size: Math.floor(Math.random() * 2) + 7,
           typeName: subtype
         };
-        let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
-          subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
-        })
+        if ((j == 1) && (!alertShape)) {
+          alertShape = sub;
+          console.log(`============ SETTING ALERT SHAPE TO ${alertShape}`);
+        }
+        // let subsubShapes = [];
+        //   ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+        //   subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
+        // })
         
-        sub["subShapes"] = subsubShapes;
+        // sub["subShapes"] = subsubShapes;
         subs.push(sub);
       }
       return subs;
     }
 
     let topShapes = [];
-    for (let i=0; i<800; i++) {
+    for (let i=0; i<50; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 99),
@@ -245,19 +253,21 @@ function App() {
         colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
       let subShapes = [];
-        // ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
-        // subShapes = subShapes.concat(createSubShapes(subtype));
-      // })
-      // topShape["subShapes"] = subShapes;
+        ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
+        subShapes = subShapes.concat(createSubShapes(subtype));
+      })
+      topShape["subShapes"] = subShapes;
       topShapes.push(topShape);
     }
     return topShapes;  
   }
 
+  let alertShape;
   let data = [];
   ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
-  let zoomgRef = React.createRef();
+
+let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
   function view1ZoomgEvent(event) {
@@ -272,8 +282,10 @@ function App() {
     zoomgRef.current && zoomgRef.current.changeAstronautName(astronautId.current.value, astronautName.current.value);
   }
 
-  function breakGlass() {
-    zoomgRef.current && zoomgRef.current.breakGlass();
+  function createAlert() {
+    // zoomgRef.current && zoomgRef.current.createAlert((data[Math.floor(Math.random() * data.length)]).id);
+    console.log(`================ ALERTING ${alertShape.id}`);
+    zoomgRef.current && zoomgRef.current.createAlert(alertShape.id);
   }
 
   function autoZoom() {
@@ -289,14 +301,14 @@ function App() {
           <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
         </div>
         <br/>
-        <button onClick={breakGlass}>Break Glass</button>
+        <button onClick={createAlert}>Create Alert</button>
         <input ref={astronautId}></input>
         <button onClick={changeNinjaName}>&gt;&gt;</button>
         <input ref={astronautName}></input>
-        <button onClick={autoZoom}>Auto Zoom</button>
+        <button onClick={autoZoom}>See Alert</button>
         <div>
           &nbsp;
-          {/* <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2> */}
+          <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
         </div>
       </div>
     </React.Fragment>

@@ -17,11 +17,11 @@ const ZoomgView2 = forwardRef((props, ref) => {
     
     const zoomgContainer = document.getElementById("zoomg-container-2");
 
-    // const onZoomgEvent = function(event) {
-    //   props.onZoomgEvent && props.onZoomgEvent(event);
-    // }
+    const onZoomgEvent = function(event) {
+      props.onZoomgEvent && props.onZoomgEvent(event);
+    }
 
-    Zoomg.createView(zoomgContainer, undefined).then( (view) => {
+    Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
       // Zoomg.createView(zoomgContainer, onZoomgEvent).then( (view) => {
       thisView = view;
       const scalesByType = {};

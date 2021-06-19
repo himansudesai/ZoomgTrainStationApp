@@ -6,7 +6,7 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
   [
-    `<polygon points="0,100 50,0 100,100" fill="none" stroke-width="1"`,
+    `<polygon points="0,100 50,0 100,100" fill="none" stroke-width="5"`,
     `></polygon>`
   ]
 ];
@@ -89,6 +89,8 @@ svgStrings[SVGComplexity.Pixels120] = [
     `></polygon>`
   ]
 ];
+
+svgStrings[SVGComplexity.Pixels140] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Triangle extends Shape {
   setColors(colors) {

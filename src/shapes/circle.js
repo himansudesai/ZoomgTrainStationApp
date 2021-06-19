@@ -6,7 +6,7 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
   [
-    `<circle cx="50" cy="50" r="50" fill="none"`,
+    `<circle cx="50" cy="50" r="50" fill="none" stroke-width="5"`,
     `></circle>`
   ]
 ];
@@ -96,6 +96,7 @@ svgStrings[SVGComplexity.Pixels120] = [
   ]
 ];
 
+svgStrings[SVGComplexity.Pixels140] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Circle extends Shape {
   setColors(colors) {
