@@ -286,6 +286,7 @@ let zoomgRef = React.createRef();
     // zoomgRef.current && zoomgRef.current.createAlert((data[Math.floor(Math.random() * data.length)]).id);
     console.log(`================ ALERTING ${alertShape.id}`);
     zoomgRef.current && zoomgRef.current.createAlert(alertShape.id);
+    zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
   }
 
   function autoZoom() {

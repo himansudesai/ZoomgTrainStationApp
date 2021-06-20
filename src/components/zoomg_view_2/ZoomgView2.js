@@ -8,8 +8,13 @@ const ZoomgView2 = forwardRef((props, ref) => {
   useImperativeHandle(ref, (event) => ({
     zoomgEvent(event) {
       thisView.apiZoomgEvent(event);
+    },
+    createAlert(shapeId) {
+      thisView.createAlert(shapeId);
+    },
+    autoZoom() {
+      thisView.zoomInOnAlertCondition();
     }
-
   }))
 
   useEffect(() => {
