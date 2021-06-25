@@ -14,8 +14,11 @@ const ZoomgView = forwardRef((props, ref) => {
     createAlert(shapeId) {
       thisView.createAlert(shapeId);
     },
-    autoZoom() {
-      thisView.zoomInOnAlertCondition();
+    zoomToAlert() {
+      thisView.zoomToAlertShape();
+    },
+    jumpToAlert() {
+      thisView.jumpToAlertShape();
     }
   }))
 

@@ -27,8 +27,7 @@ svgStrings[SVGComplexity.Pixels120] = [
     </path>
     </g>`];
 
-  svgStrings[SVGComplexity.Pixels140] = svgStrings[SVGComplexity.Pixels120];
-
+  svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Bicycle extends Shape {
   setColors(colors) {

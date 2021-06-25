@@ -64,6 +64,8 @@ svgStrings[SVGComplexity.Pixels30] = [
     </g>`
   ];
 
+  svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+
   export default class ShoppingCart extends Shape {
     setColors(colors) {
       this.red = colors[0];

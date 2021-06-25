@@ -82,6 +82,8 @@ svgStrings[SVGComplexity.InsideGroups] = `
   </g>
 `;
 
+svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+
 // svgStrings[SVGComplexity.TooSmallToDisplay] = `
 //   <g transform="translate(50, 54)" stroke-width="2">
 //     <g fill="#66899a" stroke="white">

@@ -27,6 +27,9 @@ svgStrings[SVGComplexity.Pixels120] = [
     </path>
     </g>`];
 
+  svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+
+
 export default class Landmark extends Shape {
   setColors(colors) {
     this.red = colors[0];

@@ -93,6 +93,8 @@ svgStrings[SVGComplexity.Pixels15] = `
     y="144.25183"></rect>
   </g>`;
 
+svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+
 export default class Engine extends Shape {
 
   getTypeName() {

@@ -48,19 +48,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 2.8
+      percentSize: 0.65
     },
     Rect: {
       type: Rect,
-      percentSize: 2.6
+      percentSize: 0.55
     },
     Triangle: {
       type: Triangle,
-      percentSize: 3.0
+      percentSize: 0.75
     },
     Octagon: {
       type: Octagon,
-      percentSize: 3.6
+      percentSize: 0.8
     },
     Hello: {
       type: Hello,
@@ -220,7 +220,7 @@ function App() {
 
     function createSubShapes(subtype) {
       let subs = [];
-      for (let j=0; j<3; j++) {
+      for (let j=0; j<4; j++) {
         let sub = {
           id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 80),
@@ -244,7 +244,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<50; i++) {
+    for (let i=0; i<100; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 99),
@@ -289,8 +289,12 @@ let zoomgRef = React.createRef();
     zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
   }
 
-  function autoZoom() {
-    zoomgRef.current && zoomgRef.current.autoZoom();
+  function zoomToAlert() {
+    zoomgRef.current && zoomgRef.current.zoomToAlert();
+  }
+
+  function jumpToAlert() {
+    zoomgRef.current && zoomgRef.current.jumpToAlert();
   }
 
   return (
@@ -306,7 +310,8 @@ let zoomgRef = React.createRef();
         <input ref={astronautId}></input>
         <button onClick={changeNinjaName}>&gt;&gt;</button>
         <input ref={astronautName}></input>
-        <button onClick={autoZoom}>See Alert</button>
+        <button onClick={zoomToAlert}>Zoom To Alert</button>
+        <button onClick={jumpToAlert}>Jump To Alert</button>
         <div>
           &nbsp;
           <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
