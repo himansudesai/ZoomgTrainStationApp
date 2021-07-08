@@ -48,19 +48,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 0.65
+      percentSize: 0.062
     },
     Rect: {
       type: Rect,
-      percentSize: 0.55
+      percentSize: 0.085
     },
     Triangle: {
       type: Triangle,
-      percentSize: 0.75
+      percentSize: 0.07
     },
     Octagon: {
       type: Octagon,
-      percentSize: 0.8
+      percentSize: 0.1
     },
     Hello: {
       type: Hello,
@@ -208,11 +208,11 @@ function App() {
             name: `A:${seq}`
           }
         }
-        let bottomShapes = [];
-          ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
-          bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
-        })
-        subsub["subShapes"] = bottomShapes;
+        // let bottomShapes = [];
+        //   ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
+        //   bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
+        // })
+        // subsub["subShapes"] = bottomShapes;
         subsubs.push(subsub);
       }
       return subsubs;
@@ -244,11 +244,11 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<100; i++) {
+    for (let i=0; i<8333; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
-        x: Math.floor(Math.random() * 99),
-        y: Math.floor(Math.random() * 99),
+        x: Math.floor(Math.random() * 9999) / 100,
+        y: Math.floor(Math.random() * 9999) / 100,
         typeName: type,
         colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
@@ -293,12 +293,16 @@ let zoomgRef = React.createRef();
     zoomgRef.current && zoomgRef.current.zoomToAlert();
   }
 
-  function jumpToAlert() {
-    zoomgRef.current && zoomgRef.current.jumpToAlert();
+  function zoomAndPanToAlert() {
+    zoomgRef.current && zoomgRef.current.zoomAndPanToAlert();
+  }
+
+  function zoomAndPanToSelectedShape() {
+    zoomgRef.current && zoomgRef.current.zoomAndPanToSelectedShape();
   }
 
   return (
-    <React.Fragment>
+    <>
       <h2>ZOOMG</h2>
       <div style={{marginLeft: '30px'}}>
         <div>
@@ -308,16 +312,17 @@ let zoomgRef = React.createRef();
         <br/>
         <button onClick={createAlert}>Create Alert</button>
         <input ref={astronautId}></input>
-        <button onClick={changeNinjaName}>&gt;&gt;</button>
+        <button onClick={changeNinjaName}>=&gt;&gt;</button>
         <input ref={astronautName}></input>
         <button onClick={zoomToAlert}>Zoom To Alert</button>
-        <button onClick={jumpToAlert}>Jump To Alert</button>
+        <button onClick={zoomAndPanToAlert}>Z/P To Alert</button>
+        <button onClick={zoomAndPanToSelectedShape}>Z/P To Sel</button>
         <div>
           &nbsp;
           <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

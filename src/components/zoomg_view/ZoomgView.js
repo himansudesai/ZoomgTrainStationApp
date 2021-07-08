@@ -17,8 +17,11 @@ const ZoomgView = forwardRef((props, ref) => {
     zoomToAlert() {
       thisView.zoomToAlertShape();
     },
-    jumpToAlert() {
-      thisView.jumpToAlertShape();
+    zoomAndPanToAlert() {
+      thisView.zoomAndPanToAlertShape();
+    },
+    zoomAndPanToSelectedShape() {
+      thisView.zoomAndPanToSelectedShape();
     }
   }))
 

@@ -163,13 +163,13 @@ export default class Rect extends Shape {
   renderContents(svg, svgComplexity) {
     let html = ``;
     svgStrings[svgComplexity].forEach(svgStr => {
-      html += `${svgStr[0]} stroke="rgb(${255},${0},${0})" ${svgStr[1]} ${this.getAttr('name')} ${svgStr[2]}`;
+      html += `${svgStr[0]} stroke="rgb(${this.red},${this.green},${this.blue})" ${svgStr[1]} ${this.getAttr('name')} ${svgStr[2]}`;
     })
     svg.innerHTML = html;
   }
 
   getRenderString(detailLevel) {
     const strs = svgStrings[detailLevel];
-    return `${strs[0]} stroke="rgb(${255},${0},${0})" ${strs[1]} ${this.getAttr('name')} ${strs[2]}`;
+    return `${strs[0]} stroke="rgb(${this.red},${this.green},${this.blue})" ${strs[1]} ${this.getAttr('name')} ${strs[2]}`;
  }
 }
