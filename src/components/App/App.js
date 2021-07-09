@@ -178,16 +178,12 @@ function App() {
       for (let j=0; j<2; j++) {
         let bottom = {
           id: `${bottomtype}${Math.floor(Math.random() * 1000000)}`,
-          x: Math.floor(Math.random() * 80),
-          y: Math.floor(Math.random() * 80),
+          x: Math.floor(Math.random() * 95),
+          y: Math.floor(Math.random() * 95),
           size: Math.floor(Math.random() * 2) + 7,
           typeName: bottomtype
         };
         bottoms.push(bottom);
-        if ((j == 1) && (!alertShape)) {
-          alertShape = bottom;
-          console.log(`============ SETTING ALERT SHAPE TO ${alertShape}`);
-        }
       }
       return bottoms;
     }
@@ -198,8 +194,8 @@ function App() {
         const seq = Math.floor(Math.random() * 1000000);
         let subsub = {
           id: `${subsubtype}${seq}`,
-          x: Math.floor(Math.random() * 80),
-          y: Math.floor(Math.random() * 80),
+          x: Math.floor(Math.random() * 95),
+          y: Math.floor(Math.random() * 95),
           size: Math.floor(Math.random() * 2) + 7,
           typeName: subsubtype,
         };
@@ -223,15 +219,11 @@ function App() {
       for (let j=0; j<3; j++) {
         let sub = {
           id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
-          x: Math.floor(Math.random() * 80),
-          y: Math.floor(Math.random() * 80),
+          x: Math.floor(Math.random() * 95),
+          y: Math.floor(Math.random() * 95),
           size: Math.floor(Math.random() * 2) + 7,
           typeName: subtype
         };
-        if ((j == 1) && (!alertShape)) {
-          alertShape = sub;
-          console.log(`============ SETTING ALERT SHAPE TO ${alertShape}`);
-        }
         // let subsubShapes = [];
         //   ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
         //   subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
@@ -247,16 +239,31 @@ function App() {
     for (let i=0; i<50; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
-        x: Math.floor(Math.random() * 99),
-        y: Math.floor(Math.random() * 99),
-        typeName: type,
-        colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+        x: Math.floor(Math.random() * 9999) / 100,
+        y: Math.floor(Math.random() * 9999) / 100,
+        typeName: type
+        // colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
+
+      const effectivePosition = (topShape.x * topShape.y) / 10000;
+      const rWeight = (1 - effectivePosition) * 0.9;
+      const bWeight = effectivePosition * 1.1;
+      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 2)) * 1.2;
+      // topShape.colors = [0, 0, 255];
+      topShape.colors = [255 * rWeight, 255 * gWeight, 255 * bWeight];
+      // console.log(`Colors for ${effectivePosition} => ${JSON.stringify([255 * rWeight, 255 * gWeight, 255 * bWeight])}`);
+
       let subShapes = [];
         ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
         subShapes = subShapes.concat(createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
+      if ((topShape.x >= 90) && (topShape.y >= 90) && !alertShape) {
+        const idx = Math.floor(Math.random() * subShapes.length);
+        alertShape = subShapes[idx];
+        console.log(`============ SETTING ALERT SHAPE TO ${alertShape.id}`);
+      }
+
       topShapes.push(topShape);
     }
     return topShapes;  
@@ -284,7 +291,7 @@ let zoomgRef = React.createRef();
 
   function createAlert() {
     // zoomgRef.current && zoomgRef.current.createAlert((data[Math.floor(Math.random() * data.length)]).id);
-    console.log(`================ ALERTING ${alertShape.id}`);
+    console.log(`================ ALERTING ${alertShape.id} @(${alertShape.x},${alertShape.y})`);
     zoomgRef.current && zoomgRef.current.createAlert(alertShape.id);
     zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
   }
