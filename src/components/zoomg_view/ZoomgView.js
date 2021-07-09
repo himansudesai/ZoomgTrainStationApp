@@ -90,7 +90,7 @@ const ZoomgView = forwardRef((props, ref) => {
       {
         width: 800,
         height: 400,
-        background: "linear-gradient(90deg, rgba(232,250,250,1) 0%, rgba(231,249,232,1) 5%, rgba(233,245,249,1) 100%)"
+        background: "rgba(232,250,250, 0.3)"
       }
     }>
     </div>
