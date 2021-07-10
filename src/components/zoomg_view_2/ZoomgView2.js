@@ -68,7 +68,12 @@ const ZoomgView2 = forwardRef((props, ref) => {
         }
       })
 
-      view.initialize(shapes, zoomgContainer.offsetLeft, zoomgContainer.offsetTop, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
+      view.initialize(shapes, {
+        left: zoomgContainer.offsetLeft,
+        top: zoomgContainer.offsetTop,
+        width: zoomgContainer.clientWidth,
+        height: zoomgContainer.clientHeight
+      });
     }).catch(err => {
       console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
     })

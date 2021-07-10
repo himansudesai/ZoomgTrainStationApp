@@ -75,15 +75,19 @@ const ZoomgView = forwardRef((props, ref) => {
         }
       })
 
-      view.initialize(shapes, zoomgContainer.offsetLeft, zoomgContainer.offsetTop, zoomgContainer.clientWidth, zoomgContainer.clientHeight);
+      view.initialize(shapes, {
+        left: zoomgContainer.offsetLeft,
+        top: zoomgContainer.offsetTop,
+        width: zoomgContainer.clientWidth,
+        height: zoomgContainer.clientHeight
+      },
+      16);
     }).catch(err => {
       console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
     })
   }, []);
 
-
-    // background: linear-gradient("90deg", rgba(250,228,163,1) "0%", rgba(251,233,176,1) "5%", rgba(185,240,251,1) "100%")
-
+  // background: linear-gradient("90deg", rgba(250,228,163,1) "0%", rgba(251,233,176,1) "5%", rgba(185,240,251,1) "100%")
   return (
     <div id="zoomg-container"
     style={
