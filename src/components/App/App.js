@@ -48,19 +48,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 0.062
+      percentSize: 0.62
     },
     Rect: {
       type: Rect,
-      percentSize: 0.085
+      percentSize: 0.85
     },
     Triangle: {
       type: Triangle,
-      percentSize: 0.07
+      percentSize: 0.7
     },
     Octagon: {
       type: Octagon,
-      percentSize: 0.1
+      percentSize: 1
     },
     Hello: {
       type: Hello,
@@ -236,22 +236,19 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<8333; i++) {
+    for (let i=0; i<333; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
         y: Math.floor(Math.random() * 9999) / 100,
         typeName: type
-        // colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
 
-      const effectivePosition = (topShape.x * topShape.y) / 10000;
-      const rWeight = (1 - effectivePosition) * 0.9;
-      const bWeight = effectivePosition * 1.1;
-      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 2)) * 1.2;
-      // topShape.colors = [0, 0, 255];
+      const effectivePosition = (topShape.x + topShape.y) / 200;
+      const rWeight = (1 - effectivePosition);
+      const bWeight = effectivePosition;
+      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 2));
       topShape.colors = [255 * rWeight, 255 * gWeight, 255 * bWeight];
-      // console.log(`Colors for ${effectivePosition} => ${JSON.stringify([255 * rWeight, 255 * gWeight, 255 * bWeight])}`);
 
       let subShapes = [];
         ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
