@@ -31,15 +31,12 @@ import SoccerBall from '../../shapes/soccer-ball';
 import Triangle from '../../shapes/triangle';
 
 import ZoomgView from '../zoomg_view/ZoomgView';
-import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
 import Circle from '../../shapes/circle';
 import Hello from '../../shapes/hello';
 import Rect from '../../shapes/rect';
 
 function App() {
-  const astronautId = React.createRef();
-  const astronautName = React.createRef();
 
   const metadata = {
     Atom: {
@@ -275,15 +272,7 @@ let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
   function view1ZoomgEvent(event) {
-    zoomg2Ref.current && zoomg2Ref.current.zoomgEvent(event);
-  }
-
-  function view2ZoomgEvent(event) {
-    zoomgRef.current && zoomgRef.current.zoomgEvent(event);
-  }
-
-  function changeNinjaName() {
-    zoomgRef.current && zoomgRef.current.changeAstronautName(astronautId.current.value, astronautName.current.value);
+    // zoomg2Ref.current && zoomg2Ref.current.zoomgEvent(event);
   }
 
   function createAlert() {
@@ -293,16 +282,8 @@ let zoomgRef = React.createRef();
     zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
   }
 
-  function zoomToAlert() {
-    zoomgRef.current && zoomgRef.current.zoomToAlert();
-  }
-
   function zoomAndPanToAlert() {
     zoomgRef.current && zoomgRef.current.zoomAndPanToAlert();
-  }
-
-  function zoomAndPanToSelectedShape() {
-    zoomgRef.current && zoomgRef.current.zoomAndPanToSelectedShape();
   }
 
   return (
@@ -315,16 +296,7 @@ let zoomgRef = React.createRef();
         </div>
         <br/>
         <button onClick={createAlert}>Create Alert</button>
-        <input ref={astronautId}></input>
-        <button onClick={changeNinjaName}>=&gt;&gt;</button>
-        <input ref={astronautName}></input>
-        <button onClick={zoomToAlert}>Zoom To Alert</button>
         <button onClick={zoomAndPanToAlert}>Z/P To Alert</button>
-        <button onClick={zoomAndPanToSelectedShape}>Z/P To Sel</button>
-        <div>
-          &nbsp;
-          <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
-        </div>
       </div>
     </>
   );
