@@ -45,19 +45,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 0.62
+      percentSize: 0.062
     },
     Rect: {
       type: Rect,
-      percentSize: 0.85
+      percentSize: 0.085
     },
     Triangle: {
       type: Triangle,
-      percentSize: 0.7
+      percentSize: 0.07
     },
     Octagon: {
       type: Octagon,
-      percentSize: 1
+      percentSize: 0.1
     },
     Hello: {
       type: Hello,
@@ -233,7 +233,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<333; i++) {
+    for (let i=0; i<8333; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -252,10 +252,11 @@ function App() {
         subShapes = subShapes.concat(createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
-      if ((topShape.x >= 90) && (topShape.y >= 90) && !alertShape) {
+      if ((topShape.x > 94) && (topShape.x < 97) && (topShape.y > 94) && (topShape.y < 97) && !alertShape) {
         const idx = Math.floor(Math.random() * subShapes.length);
         alertShape = subShapes[idx];
-        console.log(`============ SETTING ALERT SHAPE TO ${alertShape.id}`);
+        alertTopShape = topShape;
+        console.log(`============ SETTING ALERT SHAPE TO ${alertShape.id} topShape x/y: ${alertTopShape.x}/${alertTopShape.y}`);
       }
 
       topShapes.push(topShape);
@@ -263,6 +264,7 @@ function App() {
     return topShapes;  
   }
 
+  let alertTopShape;
   let alertShape;
   let data = [];
   ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
@@ -276,8 +278,6 @@ let zoomgRef = React.createRef();
   }
 
   function createAlert() {
-    // zoomgRef.current && zoomgRef.current.createAlert((data[Math.floor(Math.random() * data.length)]).id);
-    console.log(`================ ALERTING ${alertShape.id} @(${alertShape.x},${alertShape.y})`);
     zoomgRef.current && zoomgRef.current.createAlert(alertShape.id);
     zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
   }
