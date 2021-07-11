@@ -48,19 +48,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 0.62
+      percentSize: 1.62
     },
     Rect: {
       type: Rect,
-      percentSize: 0.85
+      percentSize: 1.85
     },
     Triangle: {
       type: Triangle,
-      percentSize: 0.7
+      percentSize: 1.7
     },
     Octagon: {
       type: Octagon,
-      percentSize: 1
+      percentSize: 2
     },
     Hello: {
       type: Hello,
@@ -184,6 +184,10 @@ function App() {
           typeName: bottomtype
         };
         bottoms.push(bottom);
+        if ((j === 1) && (!alertShape)) {
+          alertShape = bottom;
+          console.log(`============ SETTING ALERT SHAPE TO ${alertShape.id}`);
+        }
       }
       return bottoms;
     }
@@ -204,11 +208,11 @@ function App() {
             name: `A:${seq}`
           }
         }
-        // let bottomShapes = [];
-        //   ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
-        //   bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
-        // })
-        // subsub["subShapes"] = bottomShapes;
+        let bottomShapes = [];
+          ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
+          bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
+        })
+        subsub["subShapes"] = bottomShapes;
         subsubs.push(subsub);
       }
       return subsubs;
@@ -224,19 +228,19 @@ function App() {
           size: Math.floor(Math.random() * 2) + 7,
           typeName: subtype
         };
-        // let subsubShapes = [];
-        //   ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
-        //   subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
-        // })
+        let subsubShapes = [];
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
+        })
         
-        // sub["subShapes"] = subsubShapes;
+        sub["subShapes"] = subsubShapes;
         subs.push(sub);
       }
       return subs;
     }
 
     let topShapes = [];
-    for (let i=0; i<333; i++) {
+    for (let i=0; i<100; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -255,12 +259,6 @@ function App() {
         subShapes = subShapes.concat(createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
-      if ((topShape.x >= 90) && (topShape.y >= 90) && !alertShape) {
-        const idx = Math.floor(Math.random() * subShapes.length);
-        alertShape = subShapes[idx];
-        console.log(`============ SETTING ALERT SHAPE TO ${alertShape.id}`);
-      }
-
       topShapes.push(topShape);
     }
     return topShapes;  
@@ -271,7 +269,7 @@ function App() {
   ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
-let zoomgRef = React.createRef();
+  let zoomgRef = React.createRef();
   let zoomg2Ref = React.createRef();
 
   function view1ZoomgEvent(event) {
