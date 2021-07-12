@@ -31,6 +31,7 @@ import SoccerBall from '../../shapes/soccer-ball';
 import Triangle from '../../shapes/triangle';
 
 import ZoomgView from '../zoomg_view/ZoomgView';
+import ZoomgOverview from '../zoomg_overview/ZoomgOverview';
 
 import Circle from '../../shapes/circle';
 import Hello from '../../shapes/hello';
@@ -270,20 +271,24 @@ function App() {
   ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
-let zoomgRef = React.createRef();
-  let zoomg2Ref = React.createRef();
+let zoomgViewRef = React.createRef();
+let zoomgOverviewRef = React.createRef();
 
-  function view1ZoomgEvent(event) {
-    // zoomg2Ref.current && zoomg2Ref.current.zoomgEvent(event);
+  function zoomgViewEvent(event) {
+    // zoomgOverviewRef.current && zoomgOverviewRef.current.zoomgEvent(event);
+  }
+
+  function zoomgOverviewEvent(event) {
+    // zoomgViewRef.current && zoomgViewRef.current.zoomgEvent(event);
   }
 
   function createAlert() {
-    zoomgRef.current && zoomgRef.current.createAlert(alertShape.id);
-    zoomg2Ref.current && zoomg2Ref.current.createAlert(alertShape.id);
+    zoomgViewRef.current && zoomgViewRef.current.createAlert(alertShape.id);
+    // zoomgOverviewRef.current && zoomgOverviewRef.current.createAlert(alertShape.id);
   }
 
   function zoomAndPanToAlert() {
-    zoomgRef.current && zoomgRef.current.zoomAndPanToAlert();
+    zoomgViewRef.current && zoomgViewRef.current.zoomAndPanToAlert();
   }
 
   return (
@@ -292,11 +297,15 @@ let zoomgRef = React.createRef();
       <div style={{marginLeft: '30px'}}>
         <div>
           &nbsp;
-          <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
+          <ZoomgView ref={zoomgViewRef} metadata={metadata} data={data} onZoomgEvent={zoomgViewEvent}></ZoomgView>
         </div>
         <br/>
         <button onClick={createAlert}>Create Alert</button>
         <button onClick={zoomAndPanToAlert}>Z/P To Alert</button>
+        <div>
+          &nbsp;
+          <ZoomgOverview ref={zoomgOverviewRef} metadata={metadata} data={data} onZoomgEvent={zoomgOverviewEvent}></ZoomgOverview>
+        </div>
       </div>
     </>
   );

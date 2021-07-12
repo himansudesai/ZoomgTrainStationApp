@@ -1,40 +1,28 @@
 import React, {forwardRef, useEffect, useImperativeHandle} from 'react';
-import './ZoomgView.css';
+import './ZoomgOverview.css';
 
-const ZoomgView = forwardRef((props, ref) => {
+const ZoomgOverview = forwardRef((props, ref) => {
 
   let thisView;
   useImperativeHandle(ref, (event) => ({
     zoomgEvent(event) {
       thisView.apiZoomgEvent(event);
     },
-    changeAstronautName(id, name) {
-      thisView.setShapeAttr(`Astronaut${id}`, 'name', name, true);
-    },
     createAlert(shapeId) {
       thisView.createAlert(shapeId);
-    },
-    zoomToAlert() {
-      thisView.zoomToAlertShape();
-    },
-    zoomAndPanToAlert() {
-      thisView.zoomAndPanToAlertShape();
-    },
-    zoomAndPanToSelectedShape() {
-      thisView.zoomAndPanToSelectedShape();
     }
   }))
 
   useEffect(() => {
     const Zoomg = window['Zoomg'];
     
-    const zoomgContainer = document.getElementById("zoomg-container");
+    const zoomgContainer = document.getElementById("zoomg-overview");
 
     const onZoomgEvent = function(event) {
       props.onZoomgEvent && props.onZoomgEvent(event);
     }
 
-    Zoomg.createView(zoomgContainer, onZoomgEvent, {scale: 16, overview: false}).then( (view) => {
+    Zoomg.createView(zoomgContainer, onZoomgEvent, {scale: 16, overview: true}).then( (view) => {
       thisView = view;
       const scalesByType = {};
       for (const [typeName, typeMetadata] of Object.entries(props.metadata)) {
@@ -80,26 +68,26 @@ const ZoomgView = forwardRef((props, ref) => {
         top: zoomgContainer.offsetTop,
         width: zoomgContainer.clientWidth,
         height: zoomgContainer.clientHeight
-      });
+      }, 16);
     }).catch(err => {
-      console.log(`ERROR occured during the process of initializing Zoomg View.  The error is:\n${err}`);
+      console.log(`ERROR occured during the process of initializing Zoomg Overview.  The error is:\n${err}`);
     })
   }, []);
 
   // background: linear-gradient("90deg", rgba(250,228,163,1) "0%", rgba(251,233,176,1) "5%", rgba(185,240,251,1) "100%")
   return (
-    <div id="zoomg-container"
+    <div id="zoomg-overview"
     style={
       {
-        width: 800,
-        height: 400,
-        background: "rgba(250,230,230, 0.3)"
+        width: 400,
+        height: 200,
+        background: "rgba(232,250,250, 0.3)"
       }
     }>
     </div>
   );
 })
 
-export default ZoomgView;
+export default ZoomgOverview;
 
 
