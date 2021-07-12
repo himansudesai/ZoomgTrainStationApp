@@ -275,11 +275,11 @@ let zoomgViewRef = React.createRef();
 let zoomgOverviewRef = React.createRef();
 
   function zoomgViewEvent(event) {
-    // zoomgOverviewRef.current && zoomgOverviewRef.current.zoomgEvent(event);
+    zoomgOverviewRef.current && zoomgOverviewRef.current.zoomgEvent(event);
   }
 
   function zoomgOverviewEvent(event) {
-    // zoomgViewRef.current && zoomgViewRef.current.zoomgEvent(event);
+    zoomgViewRef.current && zoomgViewRef.current.zoomgEvent(event);
   }
 
   function createAlert() {
