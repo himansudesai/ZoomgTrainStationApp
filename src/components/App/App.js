@@ -305,7 +305,7 @@ function App() {
 
   return (
     <>
-      <h2>ZOOMG</h2>
+      <h2 style={{color: 'crimson', textDecoration: 'underline'}}>ZOOMG</h2>
       <div style={{marginLeft: '30px'}}>
         <div>
           &nbsp;
@@ -324,6 +324,8 @@ function App() {
           <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
         </div>
       </div>
+      <br/>
+      <hr style={{borderTop: '0.5px solid lightgray'}}></hr>
     </>
   );
 }
