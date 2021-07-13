@@ -293,7 +293,7 @@ let zoomgOverviewRef = React.createRef();
 
   return (
     <>
-      <h2>ZOOMG</h2>
+      <h2 style={{color: 'crimson', textDecoration: 'underline'}}>ZOOMG</h2>
       <div style={{marginLeft: '30px'}}>
         <div>
           &nbsp;
@@ -307,6 +307,8 @@ let zoomgOverviewRef = React.createRef();
           <ZoomgOverview ref={zoomgOverviewRef} metadata={metadata} data={data} onZoomgEvent={zoomgOverviewEvent}></ZoomgOverview>
         </div>
       </div>
+      <br/>
+      <hr style={{borderTop: '0.5px solid lightgray'}}></hr>
     </>
   );
 }
