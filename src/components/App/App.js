@@ -48,19 +48,19 @@ function App() {
     },
     Circle: {
       type: Circle,
-      percentSize: 1.62
+      percentSize: 1.21
     },
     Rect: {
       type: Rect,
-      percentSize: 1.85
+      percentSize: 1.4
     },
     Triangle: {
       type: Triangle,
-      percentSize: 1.7
+      percentSize: 1.5
     },
     Octagon: {
       type: Octagon,
-      percentSize: 2
+      percentSize: 1.6
     },
     Hello: {
       type: Hello,
@@ -240,7 +240,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<100; i++) {
+    for (let i=0; i<150; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -251,7 +251,7 @@ function App() {
       const effectivePosition = (topShape.x + topShape.y) / 200;
       const rWeight = (1 - effectivePosition);
       const bWeight = effectivePosition;
-      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 2));
+      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 4));
       topShape.colors = [255 * rWeight, 255 * gWeight, 255 * bWeight];
 
       let subShapes = [];

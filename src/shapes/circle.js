@@ -6,26 +6,26 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
   [
-    `<circle cx="50" cy="50" r="50" fill="none" stroke-width="5"`,
+    `<circle cx="50" cy="50" r="50" fill="none" stroke-width="15"`,
     `></circle>`
   ]
 ];
 
 svgStrings[SVGComplexity.Pixels30] = [
   [
-    `<circle cx="50" cy="50" r="50" fill="none"`,
+    `<circle cx="50" cy="50" r="50" fill="none" stroke-width="2"`,
     `></circle>`
   ],
   [
-    `<circle cx="50" cy="50" r="40" fill="none"`,
+    `<circle cx="50" cy="50" r="40" fill="none" stroke-width="2"`,
     `></circle>`
   ],
   [
-    `<circle cx="50" cy="50" r="30" fill="none"`,
+    `<circle cx="50" cy="50" r="30" fill="none" stroke-width="2"`,
     `></circle>`
   ],
   [
-    `<circle cx="50" cy="50" r="20" fill="none"`,
+    `<circle cx="50" cy="50" r="20" fill="none" stroke-width="2"`,
     `></circle>`
   ]
 ];
