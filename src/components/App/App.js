@@ -250,14 +250,9 @@ function App() {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
         y: Math.floor(Math.random() * 9999) / 100,
-        typeName: type
+        typeName: type,
+        colors: [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
       };
-
-      const effectivePosition = (topShape.x + topShape.y) / 200;
-      const rWeight = (1 - effectivePosition);
-      const bWeight = effectivePosition;
-      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 4));
-      topShape.colors = [255 * rWeight, 255 * gWeight, 255 * bWeight];
 
       let subShapes = [];
         ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
