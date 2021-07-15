@@ -6,7 +6,7 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
     [
-    `<rect width="100" height="100" fill="none" stroke-width="5"`,
+    `<rect width="100" height="100" fill="none" stroke-width="15"`,
     `></rect>
     `]
   ];
@@ -18,19 +18,19 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></rect>
       `],
       [
-        `<rect x="10" y="10" width="80" height="80" fill="none"`,
+        `<rect x="10" y="10" width="80" height="80" fill="none" stroke-width="2"`,
         `></rect>
       `],
       [
-        `<rect x="20" y="20" width="60" height="60" fill="none"`,
+        `<rect x="20" y="20" width="60" height="60" fill="none" stroke-width="2"`,
         `></rect>
       `],
       [
-        `<rect x="30" y="30" width="40" height="40" fill="none"`,
+        `<rect x="30" y="30" width="40" height="40" fill="none" stroke-width="2"`,
         `></rect>
       `],
       [
-        `<rect x="40" y="40" width="20" height="20" fill="none"`,
+        `<rect x="40" y="40" width="20" height="20" fill="none" stroke-width="2"`,
         `></rect>
       `]
     ];

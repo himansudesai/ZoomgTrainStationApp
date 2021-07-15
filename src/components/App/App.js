@@ -234,7 +234,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<8333; i++) {
+    for (let i=0; i<10000; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
