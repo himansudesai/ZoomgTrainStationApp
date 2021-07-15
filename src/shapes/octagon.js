@@ -6,22 +6,22 @@ const svgStrings = {}
 
 svgStrings[SVGComplexity.BarelyVisible] = [
     [
-      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="5"`,
+      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="15"`,
       `></polygon>`
     ]
   ];
 
   svgStrings[SVGComplexity.Pixels30] = [
     [
-      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="1"`,
+      `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="2"`,
       `></polygon>`
     ],
     [
-      `<polygon points="10,30 30,10 70,10 90,30 90,70 70,90 30,90 10,70" fill="none" stroke-width="1"`,
+      `<polygon points="10,30 30,10 70,10 90,30 90,70 70,90 30,90 10,70" fill="none" stroke-width="2"`,
       `></polygon>`
     ],
     [
-      `<polygon points="20,35 35,20 65,20 80,35 80,65 65,80 35,80 20,65" fill="none" stroke-width="1"`,
+      `<polygon points="20,35 35,20 65,20 80,35 80,65 65,80 35,80 20,65" fill="none" stroke-width="2"`,
       `></polygon>`
     ]
   ];
