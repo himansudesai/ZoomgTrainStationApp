@@ -28,6 +28,7 @@ import Plane from '../../shapes/plane';
 import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
+import Star from '../../shapes/star';
 import Triangle from '../../shapes/triangle';
 
 import ZoomgView from '../zoomg_view/ZoomgView';
@@ -59,6 +60,10 @@ function App() {
     Octagon: {
       type: Octagon,
       percentSize: 0.1
+    },
+    Star: {
+      type: Star,
+      percentSize: 0.075
     },
     Hello: {
       type: Hello,
@@ -268,7 +273,7 @@ function App() {
   let alertTopShape;
   let alertShape;
   let data = [];
-  ['Circle', 'Rect', 'Triangle', 'Circle', 'Octagon'].forEach(type => data = data.concat(createTopLevelShape(type)));
+  ['Octagon', 'Triangle', 'Circle', 'Rect', 'Star'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
 let zoomgViewRef = React.createRef();
