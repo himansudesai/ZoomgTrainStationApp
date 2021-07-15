@@ -245,7 +245,7 @@ function App() {
       const effectivePosition = (topShape.x + topShape.y) / 200;
       const rWeight = (1 - effectivePosition);
       const bWeight = effectivePosition;
-      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 2));
+      const gWeight = (1 - (Math.abs(0.5 - effectivePosition) * 4));
       topShape.colors = [255 * rWeight, 255 * gWeight, 255 * bWeight];
 
       let subShapes = [];
