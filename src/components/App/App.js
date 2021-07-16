@@ -185,7 +185,7 @@ function App() {
 
     function createBottomShapes(bottomtype) {
       let bottoms = [];
-      for (let j=0; j<2; j++) {
+      for (let j=0; j<4; j++) {
         let bottom = {
           id: `${bottomtype}${Math.floor(Math.random() * 1000000)}`,
           x: Math.floor(Math.random() * 95),
@@ -204,7 +204,7 @@ function App() {
 
     function createSubSubShapes(subsubtype) {
       let subsubs = [];
-      for (let j=0; j<2; j++) {
+      for (let j=0; j<4; j++) {
         const seq = Math.floor(Math.random() * 1000000);
         let subsub = {
           id: `${subsubtype}${seq}`,
@@ -250,7 +250,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<100; i++) {
+    for (let i=0; i<50; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -321,9 +321,7 @@ function App() {
         <input ref={astronautId}></input>
         <button onClick={changeNinjaName}>=&gt;&gt;</button>
         <input ref={astronautName}></input>
-        <button onClick={zoomToAlert}>Zoom To Alert</button>
         <button onClick={zoomAndPanToAlert}>Z/P To Alert</button>
-        <button onClick={zoomAndPanToSelectedShape}>Z/P To Sel</button>
         <div>
           &nbsp;
           <ZoomgView2 ref={zoomg2Ref} metadata={metadata} data={data} onZoomgEvent={view2ZoomgEvent}></ZoomgView2>
