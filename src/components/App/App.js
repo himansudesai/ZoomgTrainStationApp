@@ -28,6 +28,7 @@ import Plane from '../../shapes/plane';
 import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
+import Spokes from '../../shapes/spokes';
 import Star from '../../shapes/star';
 import Triangle from '../../shapes/triangle';
 
@@ -66,6 +67,10 @@ function App() {
     Star: {
       type: Star,
       percentSize: 1.31
+    },
+    Spokes: {
+      type: Spokes,
+      percentSize: 1.45
     },
     Hello: {
       type: Hello,
@@ -245,7 +250,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<150; i++) {
+    for (let i=0; i<100; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -255,7 +260,7 @@ function App() {
       };
 
       let subShapes = [];
-        ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
+      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
         subShapes = subShapes.concat(createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
@@ -266,7 +271,7 @@ function App() {
 
   let alertShape;
   let data = [];
-  ['Octagon', 'Triangle', 'Circle', 'Rect', 'Star'].forEach(type => data = data.concat(createTopLevelShape(type)));
+  ['Octagon', 'Triangle', 'Circle', 'Rect', 'Star', 'Spokes'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
   let zoomgRef = React.createRef();
