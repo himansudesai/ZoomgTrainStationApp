@@ -310,8 +310,12 @@ function App() {
 
   return (
     <>
-      <h2 style={{color: 'crimson', textDecoration: 'underline'}}>ZOOMG</h2>
-      <div style={{marginLeft: '30px'}}>
+      <h2>
+      <span style={{color: 'deeppink'}}>S</span>
+      <span style={{color: 'forestgreen'}}>V</span>
+      <span style={{color: 'deepskyblue'}}>G</span>
+      <span style={{color: 'goldenrod'}}>&nbsp;Wiz<sup style={{fontSize: '50%'}}>&#9733;</sup></span>
+      </h2>      <div style={{marginLeft: '30px'}}>
         <div>
           &nbsp;
           <ZoomgView ref={zoomgRef} metadata={metadata} data={data} onZoomgEvent={view1ZoomgEvent}></ZoomgView>
