@@ -219,7 +219,7 @@ function App() {
           }
         }
         let bottomShapes = [];
-          ['Glasses', 'GlassMartini', 'GlassWine', 'Hourglass', 'Beer'].forEach(bottomtype => {
+          ['Beer', 'GlassMartini', 'GlassWine', 'Hourglass', 'Glasses'].forEach(bottomtype => {
           bottomShapes = bottomShapes.concat(createBottomShapes(bottomtype));
         })
         subsub["subShapes"] = bottomShapes;
@@ -271,7 +271,7 @@ function App() {
 
   let alertShape;
   let data = [];
-  ['Octagon', 'Triangle', 'Circle', 'Rect', 'Star', 'Spokes'].forEach(type => data = data.concat(createTopLevelShape(type)));
+  ['Octagon', 'Triangle', 'Circle', , 'Spokes', 'Rect', 'Star'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
   let zoomgRef = React.createRef();
