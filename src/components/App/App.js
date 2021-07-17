@@ -293,8 +293,9 @@ let zoomgOverviewRef = React.createRef();
   }
 
   function createAlert() {
-    zoomgViewRef.current && zoomgViewRef.current.createAlert(alertShape.id);
-    // zoomgOverviewRef.current && zoomgOverviewRef.current.createAlert(alertShape.id);
+    if (alertShape) {
+      zoomgViewRef.current && zoomgViewRef.current.createAlert(alertShape.id);
+    }
   }
 
   function zoomAndPanToAlert() {
