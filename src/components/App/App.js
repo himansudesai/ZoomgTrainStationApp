@@ -311,7 +311,7 @@ function App() {
   return (
     <>
       <h2>
-      <span style={{color: 'deeppink'}}>S</span>
+      <span style={{color: 'deeppink'}}>&nbsp;S</span>
       <span style={{color: 'forestgreen'}}>V</span>
       <span style={{color: 'deepskyblue'}}>G</span>
       <span style={{color: 'goldenrod'}}>&nbsp;Wiz<sup style={{fontSize: '50%'}}>&#9733;</sup></span>
