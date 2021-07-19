@@ -28,16 +28,17 @@ import Plane from '../../shapes/plane';
 import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
-import Spokes from '../../shapes/spokes';
-import Star from '../../shapes/star';
-import Triangle from '../../shapes/triangle';
 
 import ZoomgView from '../zoomg_view/ZoomgView';
 import ZoomgView2 from '../zoomg_view_2/ZoomgView2';
 
+import Spokes from '../../shapes/spokes';
+import Star from '../../shapes/star';
+import Triangle from '../../shapes/triangle';
 import Circle from '../../shapes/circle';
 import Hello from '../../shapes/hello';
 import Rect from '../../shapes/rect';
+import City from '../../shapes/city';
 
 function App() {
   const astronautId = React.createRef();
@@ -71,6 +72,10 @@ function App() {
     Spokes: {
       type: Spokes,
       percentSize: 1.45
+    },
+    City: {
+      type: City,
+      percentSize: 2.13
     },
     Hello: {
       type: Hello,
@@ -228,6 +233,52 @@ function App() {
       return subsubs;
     }
 
+    function createCitySubShapes() {
+      let subs = [];
+      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach((subtype, idx) => {
+        for (let j=0; j<4; j++) {
+          let sub = {
+            id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
+            x: Math.floor(Math.random() * 95),
+            y: Math.floor(Math.random() * 95),
+            size: Math.floor(Math.random() * 2) + 7,
+            typeName: subtype
+          };
+          let subsubShapes = [];
+            ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+            subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
+          });
+          
+          sub["subShapes"] = subsubShapes;
+          subs.push(sub);
+        }
+      });
+      return subs;
+    }
+
+    function createCitySubShapes() {
+      let subs = [];
+      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach( (subtype, idx) => {
+        for (let j=0; j<4; j++) {
+          let sub = {
+            id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
+            x: Math.floor(Math.random() * 95),
+            y: 20 * idx,
+            size: Math.floor(Math.random() * 2) + 4,
+            typeName: subtype
+          };
+          let subsubShapes = [];
+            ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+            subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
+          })
+          
+          sub["subShapes"] = subsubShapes;
+          subs.push(sub);
+        }
+      })
+      return subs;
+    }
+
     function createSubShapes(subtype) {
       let subs = [];
       for (let j=0; j<4; j++) {
@@ -250,7 +301,7 @@ function App() {
     }
 
     let topShapes = [];
-    for (let i=0; i<50; i++) {
+    for (let i=0; i<5; i++) {
       let topShape = {
         id: `${type}${Math.floor(Math.random() * 1000000)}`,
         x: Math.floor(Math.random() * 9999) / 100,
@@ -261,7 +312,7 @@ function App() {
 
       let subShapes = [];
       ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
-        subShapes = subShapes.concat(createSubShapes(subtype));
+        subShapes = subShapes.concat((type === 'City') ? createCitySubShapes() : createSubShapes(subtype));
       })
       topShape["subShapes"] = subShapes;
       topShapes.push(topShape);
@@ -271,7 +322,7 @@ function App() {
 
   let alertShape;
   let data = [];
-  ['Octagon', 'Triangle', 'Circle', , 'Spokes', 'Rect', 'Star'].forEach(type => data = data.concat(createTopLevelShape(type)));
+  ['Octagon', 'Triangle', 'Circle', , 'Spokes', 'Rect', 'Star', 'City'].forEach(type => data = data.concat(createTopLevelShape(type)));
 //  ['Church', 'Hospital', 'Hotel', 'Landmark', 'Building', 'Fort'].forEach(type => data = data.concat(createTopLevelShape(type)));
 
   let zoomgRef = React.createRef();
