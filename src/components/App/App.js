@@ -11,6 +11,7 @@ import Car from '../../shapes/car';
 import Church from '../../shapes/church';
 import Detective  from '../../shapes/detective';
 import Doctor from '../../shapes/doctor';
+import Nurse from '../../shapes/nurse';
 import Engine from '../../shapes/engine';
 import Fort from '../../shapes/fort';
 import GlassWine  from '../../shapes/glass-wine';
@@ -144,6 +145,10 @@ function App() {
       type: Ninja,
       percentSize: 0.008
     },
+    Nurse: {
+      type: Nurse,
+      percentSize: 0.012
+    },
     Octagon: {
       type: Octagon,
       percentSize: 1.62
@@ -273,7 +278,7 @@ function App() {
           typeName: subtype
         };
         let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Nurse', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
         
