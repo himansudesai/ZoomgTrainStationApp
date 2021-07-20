@@ -2,10 +2,10 @@ const Zoomg = window.Zoomg;
 const Shape = Zoomg.Shape;
 const SVGComplexity = Zoomg.SVGComplexity;
 
-const svgStrings = {}
+const svgStrings = {};
 svgStrings[SVGComplexity.Pixels120] = [
-  `<g transform="translate(0, 0) scale(0.18, 0.18)"`,
-  `><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zM104 424c0 13.3 10.7 24 24 24s24-10.7 24-24-10.7-24-24-24-24 10.7-24 24zm216-135.4v49c36.5 7.4 64 39.8 64 78.4v41.7c0 7.6-5.4 14.2-12.9 15.7l-32.2 6.4c-4.3.9-8.5-1.9-9.4-6.3l-3.1-15.7c-.9-4.3 1.9-8.6 6.3-9.4l19.3-3.9V416c0-62.8-96-65.1-96 1.9v26.7l19.3 3.9c4.3.9 7.1 5.1 6.3 9.4l-3.1 15.7c-.9 4.3-5.1 7.1-9.4 6.3l-31.2-4.2c-7.9-1.1-13.8-7.8-13.8-15.9V416c0-38.6 27.5-70.9 64-78.4v-45.2c-2.2.7-4.4 1.1-6.6 1.9-18 6.3-37.3 9.8-57.4 9.8s-39.4-3.5-57.4-9.8c-7.4-2.6-14.9-4.2-22.6-5.2v81.6c23.1 6.9 40 28.1 40 53.4 0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.3 16.9-46.5 40-53.4v-80.4C48.5 301 0 355.8 0 422.4v44.8C0 491.9 20.1 512 44.8 512h358.4c24.7 0 44.8-20.1 44.8-44.8v-44.8c0-72-56.8-130.3-128-133.8z">
+  `<g transform="translate(0, 0) scale(0.19, 0.19)"`,
+  `><path d="M319.41,320,224,415.39,128.59,320C57.1,323.1,0,381.6,0,453.79A58.21,58.21,0,0,0,58.21,512H389.79A58.21,58.21,0,0,0,448,453.79C448,381.6,390.9,323.1,319.41,320ZM224,304A128,128,0,0,0,352,176V65.82a32,32,0,0,0-20.76-30L246.47,4.07a64,64,0,0,0-44.94,0L116.76,35.86A32,32,0,0,0,96,65.82V176A128,128,0,0,0,224,304ZM184,71.67a5,5,0,0,1,5-5h21.67V45a5,5,0,0,1,5-5h16.66a5,5,0,0,1,5,5V66.67H259a5,5,0,0,1,5,5V88.33a5,5,0,0,1-5,5H237.33V115a5,5,0,0,1-5,5H215.67a5,5,0,0,1-5-5V93.33H189a5,5,0,0,1-5-5ZM144,160H304v16a80,80,0,0,1-160,0Z">
   </path>
   </g>`];
 
@@ -17,7 +17,7 @@ svgStrings[SVGComplexity.Pixels120] = [
 
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
 
-export default class Doctor extends Shape {
+export default class Nurse extends Shape {
   setColors(colors) {
     this.red = colors[0];
     this.green = colors[1];
@@ -25,7 +25,7 @@ export default class Doctor extends Shape {
   }
 
   getTypeName() {
-    return "Doctor";
+    return "Nurse";
   }
 
   renderContents(svg, svgComplexity) {
@@ -38,3 +38,5 @@ export default class Doctor extends Shape {
     return `${strs[0]} fill="rgb(${this.red},${this.green},${this.blue})" ${strs[1]}`;
  }
 }
+
+
