@@ -83,6 +83,7 @@ svgStrings[SVGComplexity.InsideGroups] = `
 `;
 
 svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
 // svgStrings[SVGComplexity.TooSmallToDisplay] = `
 //   <g transform="translate(50, 54)" stroke-width="2">

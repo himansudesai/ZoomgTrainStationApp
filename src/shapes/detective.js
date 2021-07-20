@@ -10,12 +10,10 @@ svgStrings[SVGComplexity.Pixels120] = [
   </g>`];
 
   svgStrings[SVGComplexity.Pixels60] = svgStrings[SVGComplexity.Pixels120];
-
   svgStrings[SVGComplexity.Pixels30] = svgStrings[SVGComplexity.Pixels120];
-
   svgStrings[SVGComplexity.BarelyVisible] = svgStrings[SVGComplexity.Pixels120];
-
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+  svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Detective extends Shape {
   setColors(colors) {
