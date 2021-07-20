@@ -95,6 +95,7 @@ svgStrings[SVGComplexity.BarelyVisible] = [
   ];
 
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+  svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
 
 export default class Octagon extends Shape {

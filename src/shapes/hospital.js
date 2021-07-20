@@ -24,6 +24,7 @@ const svgStrings = {}
     </g>`];
 
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+  svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
 export default class Hospital extends Shape {
   setColors(colors) {

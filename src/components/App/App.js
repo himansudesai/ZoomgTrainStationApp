@@ -25,7 +25,6 @@ import Octagon from '../../shapes/octagon';
 import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
-import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
 import Star from '../../shapes/star';
@@ -73,10 +72,6 @@ function App() {
     Hello: {
       type: Hello,
       percentSize: 2
-    },
-    Rectangles: {
-      type: Rectangles,
-      percentSize: 3
     },
     Engine: {
       type: Engine,
