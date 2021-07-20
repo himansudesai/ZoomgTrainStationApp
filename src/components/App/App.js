@@ -45,144 +45,144 @@ function App() {
   const astronautName = React.createRef();
 
   const metadata = {
-    Atom: {
-      type: Atom,
-      percentSize: 3.3
-    },
-    Circle: {
-      type: Circle,
-      percentSize: 1.2
-    },
-    Rect: {
-      type: Rect,
-      percentSize: 1.39
-    },
-    Triangle: {
-      type: Triangle,
-      percentSize: 1.5
-    },
-    Octagon: {
-      type: Octagon,
-      percentSize: 1.62
-    },
-    Star: {
-      type: Star,
-      percentSize: 1.31
-    },
-    Spokes: {
-      type: Spokes,
-      percentSize: 1.45
-    },
-    City: {
-      type: City,
-      percentSize: 2.13
-    },
-    Hello: {
-      type: Hello,
-      percentSize: 2
-    },
-    Rectangles: {
-      type: Rectangles,
-      percentSize: 3
-    },
-    Engine: {
-      type: Engine,
-      percentSize: 1
-    },
-    ShoppingCart: {
-      type: ShoppingCart,
-      percentSize: 0.02
-    },
-    Building: {
-      type: Building,
-      percentSize: 3
-    },
-    Hospital: {
-      type: Hospital,
-      percentSize: 2
-    },
-    Church: {
-      type: Church,
-      percentSize: 4
-    },
-    SoccerBall: {
-      type: SoccerBall,
-      percentSize: 10
-    },
-    Landmark: {
-      type: Landmark,
-      percentSize: 1
-    },
-    Hotel: {
-      type: Hotel,
-      percentSize: 2
-    },
-    Fort: {
-      type: Fort,
-      percentSize: 2
-    },
-    Car: {
-      type: Car,
-      percentSize: 0.2
-    },
-    Bicycle: {
-      type: Bicycle,
-      percentSize: 0.12
-    },
     Ambulance: {
       type: Ambulance,
       percentSize: 0.13
     },
-    Pram: {
-      type: Pram,
-      percentSize: 0.14
+    Astronaut: {
+      type: Astronaut,
+      percentSize: 0.008
     },
-    Plane: {
-      type: Plane,
-      percentSize: 0.15
-    },
-    Bus: {
-      type: Bus,
-      percentSize: 0.16
+    Atom: {
+      type: Atom,
+      percentSize: 3.3
     },
     Beer: {
       type: Beer,
       percentSize: 10
     },
-    Ninja: {
-      type: Ninja,
+    Bicycle: {
+      type: Bicycle,
+      percentSize: 0.12
+    },
+    Building: {
+      type: Building,
+      percentSize: 0.25
+    },
+    Bus: {
+      type: Bus,
+      percentSize: 0.16
+    },
+    Car: {
+      type: Car,
+      percentSize: 0.2
+    },
+    Church: {
+      type: Church,
+      percentSize: 0.21
+    },
+    Circle: {
+      type: Circle,
+      percentSize: 1.2
+    },
+    City: {
+      type: City,
+      percentSize: 2.13
+    },
+    Detective: {
+      type: Detective,
+      percentSize: 0.01
+    },
+    Doctor: {
+      type: Doctor,
+      percentSize: 0.012
+    },
+    Engine: {
+      type: Engine,
+      percentSize: 1
+    },
+    Fort: {
+      type: Fort,
+      percentSize: 0.27
+    },
+    GlassWine: {
+      type: GlassWine
+    },
+    Glasses: {
+      type: Glasses,
+      percentSize: 0.008
+    },
+    GlassMartini: {
+      type: GlassMartini,
       percentSize: 0.008
     },
     Graduate: {
       type: Graduate,
       percentSize: 0.009
     },
-    Detective: {
-      type: Detective,
-      percentSize: 0.01
+    Hospital: {
+      type: Hospital,
+      percentSize: 0.23
     },
-    Astronaut: {
-      type: Astronaut,
-      percentSize: 0.008
+    Hello: {
+      type: Hello,
+      percentSize: 2
     },
-    Doctor: {
-      type: Doctor,
-      percentSize: 0.012
-    },
-    GlassWine: {
-      type: GlassWine
-    },
-    GlassMartini: {
-      type: GlassMartini,
-      percentSize: 0.008
-    },
-    Glasses: {
-      type: Glasses,
-      percentSize: 0.008
+    Hotel: {
+      type: Hotel,
+      percentSize: 0.25
     },
     Hourglass: {
       type: Hourglass,
       percentSize: 0.008
+    },
+    Landmark: {
+      type: Landmark,
+      percentSize: 0.24
+    },
+    Ninja: {
+      type: Ninja,
+      percentSize: 0.008
+    },
+    Octagon: {
+      type: Octagon,
+      percentSize: 1.62
+    },
+    Plane: {
+      type: Plane,
+      percentSize: 0.15
+    },
+    Pram: {
+      type: Pram,
+      percentSize: 0.14
+    },
+    Rect: {
+      type: Rect,
+      percentSize: 1.39
+    },
+    Rectangles: {
+      type: Rectangles,
+      percentSize: 3
+    },
+    ShoppingCart: {
+      type: ShoppingCart,
+      percentSize: 0.02
+    },
+    SoccerBall: {
+      type: SoccerBall,
+      percentSize: 10
+    },
+    Spokes: {
+      type: Spokes,
+      percentSize: 1.45
+    },
+    Star: {
+      type: Star,
+      percentSize: 1.31
+    },
+    Triangle: {
+      type: Triangle,
+      percentSize: 1.5
     }
   };
 
@@ -235,43 +235,26 @@ function App() {
 
     function createCitySubShapes() {
       let subs = [];
-      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach((subtype, idx) => {
-        for (let j=0; j<4; j++) {
+      [['Church', 7], ['Building', 5], ['Hospital', 12], ['Fort', 10], ['Hotel', 6], ['Landmark', 9] ].forEach((subtype, idx) => {
+        for (let j=0; j<15; j++) {
+          let x = (j*subtype[1] + 2);
+          let y = 20 * idx + 5;
+          if (x > 90) {
+            x = x - 90;
+            y = y + 10;
+          }
           let sub = {
-            id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
-            x: Math.floor(Math.random() * 95),
-            y: Math.floor(Math.random() * 95),
-            size: Math.floor(Math.random() * 2) + 7,
-            typeName: subtype
+            id: `${subtype[0]}${Math.floor(Math.random() * 1000000)}`,
+            x: x,
+            y: y,
+            size: subtype[1],
+            typeName: subtype[0]
           };
           let subsubShapes = [];
-            ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
-            subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
-          });
-          
-          sub["subShapes"] = subsubShapes;
-          subs.push(sub);
-        }
-      });
-      return subs;
-    }
-
-    function createCitySubShapes() {
-      let subs = [];
-      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach( (subtype, idx) => {
-        for (let j=0; j<4; j++) {
-          let sub = {
-            id: `${subtype}${Math.floor(Math.random() * 1000000)}`,
-            x: Math.floor(Math.random() * 95),
-            y: 20 * idx,
-            size: Math.floor(Math.random() * 2) + 4,
-            typeName: subtype
-          };
-          let subsubShapes = [];
-            ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
             subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
           })
-          
+
           sub["subShapes"] = subsubShapes;
           subs.push(sub);
         }
@@ -311,9 +294,13 @@ function App() {
       };
 
       let subShapes = [];
-      ['Car', 'Bicycle', 'Ambulance', 'Pram', 'Bus', 'Plane'].forEach(subtype => {
-        subShapes = subShapes.concat((type === 'City') ? createCitySubShapes() : createSubShapes(subtype));
-      })
+      if (type === 'City') {
+        subShapes = subShapes.concat(createCitySubShapes());
+      } else {
+        ['Church', 'Hospital', 'Fort', 'Hotel', 'Building', 'Landmark'].forEach(subtype => {
+          subShapes = subShapes.concat(createSubShapes(subtype));
+        })
+      }
       topShape["subShapes"] = subShapes;
       topShapes.push(topShape);
     }
