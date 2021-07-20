@@ -26,7 +26,6 @@ import Octagon from '../../shapes/octagon';
 import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
-import Rectangles from '../../shapes/rectangles';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
 
@@ -164,10 +163,6 @@ function App() {
     Rect: {
       type: Rect,
       percentSize: 1.39
-    },
-    Rectangles: {
-      type: Rectangles,
-      percentSize: 3
     },
     ShoppingCart: {
       type: ShoppingCart,

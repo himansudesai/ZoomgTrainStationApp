@@ -10,7 +10,6 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></polygon>`
     ]
   ];
-
   svgStrings[SVGComplexity.Pixels30] = [
     [
       `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="2"`,
@@ -25,7 +24,6 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></polygon>`
     ]
   ];
-
   svgStrings[SVGComplexity.Pixels60] = [
     [
       `<polygon points="0,25 25,0 75,0 100,25 100,75 75,100 25,100 0,75" fill="none" stroke-width="1"`,
@@ -48,7 +46,6 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></polygon>`
     ]
   ];
-
   svgStrings[SVGComplexity.Pixels120] = [
     [
       `<polygon points="0,25   25,0   75,0   100,25  100,75  75,100  25,100  0,75" fill="none" stroke-width="1"`,
@@ -93,8 +90,8 @@ svgStrings[SVGComplexity.BarelyVisible] = [
       `></polygon>`
     ]
   ];
-
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
+  svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
 
 export default class Octagon extends Shape {
