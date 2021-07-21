@@ -29,6 +29,7 @@ import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
 import Patient from '../../shapes/patient';
+import Radiation from '../../shapes/radiation';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
 
@@ -175,6 +176,10 @@ function App() {
       type: Pram,
       percentSize: 0.14
     },
+    Radiation: {
+      type: Radiation,
+      percentSize: 0.01
+    },
     Rect: {
       type: Rect,
       percentSize: 1.39
@@ -266,7 +271,7 @@ function App() {
             typeName: subtype[0]
           };
           let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Doctor', 'Bed', 'Nurse', 'Patient', 'Ambulance', 'Radiation'].forEach(subsubtype => {
             subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
           })
 
