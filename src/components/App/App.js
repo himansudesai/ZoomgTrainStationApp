@@ -3,6 +3,7 @@ import './App.css';
 import Ambulance from '../../shapes/ambulance';
 import Astronaut from '../../shapes/astronaut';
 import Atom from '../../shapes/atom';
+import Bed from '../../shapes/bed';
 import Beer from '../../shapes/beer';
 import Bicycle from '../../shapes/bicycle';
 import Building from '../../shapes/building';
@@ -57,6 +58,10 @@ function App() {
     Atom: {
       type: Atom,
       percentSize: 3.3
+    },
+    Bed: {
+      type: Bed,
+      percentSize: 0.012
     },
     Beer: {
       type: Beer,
@@ -278,7 +283,7 @@ function App() {
           typeName: subtype
         };
         let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Nurse', 'Patient', 'Ambulance', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Bed', 'Nurse', 'Patient', 'Ambulance', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
         
