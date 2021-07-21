@@ -24,6 +24,7 @@ import Hotel from '../../shapes/hotel';
 import Hourglass  from '../../shapes/hourglass';
 import Landmark from '../../shapes/landmark';
 import Octagon from '../../shapes/octagon';
+import Medkit from '../../shapes/medkit';
 import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
@@ -145,6 +146,10 @@ function App() {
     Landmark: {
       type: Landmark,
       percentSize: 0.24
+    },
+    Medkit: {
+      type: Medkit,
+      percentSize: 0.011
     },
     Ninja: {
       type: Ninja,
@@ -283,7 +288,7 @@ function App() {
           typeName: subtype
         };
         let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Bed', 'Nurse', 'Patient', 'Ambulance', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Doctor', 'Bed', 'Nurse', 'Patient', 'Ambulance', 'Medkit', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
         
