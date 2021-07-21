@@ -26,6 +26,7 @@ import Octagon from '../../shapes/octagon';
 import Ninja from '../../shapes/ninja';
 import Pram from '../../shapes/pram';
 import Plane from '../../shapes/plane';
+import Patient from '../../shapes/patient';
 import ShoppingCart  from '../../shapes/shopping-cart';
 import SoccerBall from '../../shapes/soccer-ball';
 
@@ -47,7 +48,7 @@ function App() {
   const metadata = {
     Ambulance: {
       type: Ambulance,
-      percentSize: 0.13
+      percentSize: 0.013
     },
     Astronaut: {
       type: Astronaut,
@@ -151,6 +152,10 @@ function App() {
     Octagon: {
       type: Octagon,
       percentSize: 1.62
+    },
+    Patient: {
+      type: Patient,
+      percentSize: 0.012,
     },
     Plane: {
       type: Plane,
@@ -273,7 +278,7 @@ function App() {
           typeName: subtype
         };
         let subsubShapes = [];
-          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Nurse', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
+          ['Ninja', 'Graduate', 'Detective', 'Doctor', 'Nurse', 'Patient', 'Ambulance', 'ShoppingCart', 'Astronaut'].forEach(subsubtype => {
           subsubShapes = subsubShapes.concat(createSubSubShapes(subsubtype));
         })
         
