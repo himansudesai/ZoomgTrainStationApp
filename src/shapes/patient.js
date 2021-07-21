@@ -5,7 +5,7 @@ const SVGComplexity = Zoomg.SVGComplexity;
 const svgStrings = {};
 svgStrings[SVGComplexity.Pixels120] = [
     `<g transform="translate(0, 0) scale(0.20, 0.19)"`,
-    `><path d="M319.41,320,224,415.39,128.59,320C57.1,323.1,0,381.6,0,453.79A58.21,58.21,0,0,0,58.21,512H389.79A58.21,58.21,0,0,0,448,453.79C448,381.6,390.9,323.1,319.41,320ZM224,304A128,128,0,0,0,352,176V65.82a32,32,0,0,0-20.76-30L246.47,4.07a64,64,0,0,0-44.94,0L116.76,35.86A32,32,0,0,0,96,65.82V176A128,128,0,0,0,224,304ZM184,71.67a5,5,0,0,1,5-5h21.67V45a5,5,0,0,1,5-5h16.66a5,5,0,0,1,5,5V66.67H259a5,5,0,0,1,5,5V88.33a5,5,0,0,1-5,5H237.33V115a5,5,0,0,1-5,5H215.67a5,5,0,0,1-5-5V93.33H189a5,5,0,0,1-5-5ZM144,160H304v16a80,80,0,0,1-160,0Z">
+    `><path d="M277.37 11.98C261.08 4.47 243.11 0 224 0c-53.69 0-99.5 33.13-118.51 80h81.19l90.69-68.02zM342.51 80c-7.9-19.47-20.67-36.2-36.49-49.52L239.99 80h102.52zM224 256c70.69 0 128-57.31 128-128 0-5.48-.95-10.7-1.61-16H97.61c-.67 5.3-1.61 10.52-1.61 16 0 70.69 57.31 128 128 128zM80 299.7V512h128.26l-98.45-221.52A132.835 132.835 0 0 0 80 299.7zM0 464c0 26.51 21.49 48 48 48V320.24C18.88 344.89 0 381.26 0 422.4V464zm256-48h-55.38l42.67 96H256c26.47 0 48-21.53 48-48s-21.53-48-48-48zm57.6-128h-16.71c-22.24 10.18-46.88 16-72.89 16s-50.65-5.82-72.89-16h-7.37l42.67 96H256c44.11 0 80 35.89 80 80 0 18.08-6.26 34.59-16.41 48H400c26.51 0 48-21.49 48-48v-41.6c0-74.23-60.17-134.4-134.4-134.4z">
     </path>
     </g>`];
 
@@ -15,7 +15,7 @@ svgStrings[SVGComplexity.Pixels120] = [
   svgStrings[SVGComplexity.Pixels90] = svgStrings[SVGComplexity.Pixels120];
   svgStrings[SVGComplexity.Pixels150] = svgStrings[SVGComplexity.Pixels120];
 
-export default class Nurse extends Shape {
+export default class Patient extends Shape {
   setColors(colors) {
     this.red = colors[0];
     this.green = colors[1];
@@ -23,7 +23,7 @@ export default class Nurse extends Shape {
   }
 
   getTypeName() {
-    return "Nurse";
+    return "Patient";
   }
 
   renderContents(svg, svgComplexity) {
